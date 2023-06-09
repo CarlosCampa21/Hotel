@@ -45,7 +45,7 @@ public class Ventana extends JFrame {
 	
 	public Ventana() {
 		this.setVisible(true);
-		this.setSize(1000, 600);
+		this.setSize(1000, 640);
 		this.setLocationRelativeTo(null);
 		this.setTitle("ZENT");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -197,7 +197,7 @@ public class Ventana extends JFrame {
         miCuentaPanel.add(updateButton);
 
 		JLabel fondo = new JLabel(new ImageIcon("fondo2.PNG"));
-		fondo.setBounds(-2, 1, 525, 700);//ANCHO X, Y,TAMAÑO
+		fondo.setBounds(-2, 1, 1000, 600);//ANCHO X, Y,TAMAÑO
 		miCuentaPanel.add(fondo);
         
         cancelButton.addActionListener(new ActionListener() {
@@ -340,7 +340,7 @@ public class Ventana extends JFrame {
 						
 					}//FIN DEL IF 
 					else {
-						if(docente==true) {
+						if(docente==false) {
 							if(!user.contains("@alu.uabcs.mx") && user.contains("@uabcs.mx")) {
 								while(line != null) {
 									
@@ -408,7 +408,7 @@ public class Ventana extends JFrame {
 		repaint();
 		revalidate();
 }	
-	/*
+	//*
 	public void filtroUsuarios () {
 		filtroUsuarios = new JPanel();
 		filtroUsuarios.setSize(1000, 600);
@@ -481,7 +481,7 @@ public class Ventana extends JFrame {
 		
 		repaint();
 		revalidate();
-}*/
+}//*/
 	public String buscarImagen() {
 		JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -499,7 +499,7 @@ public class Ventana extends JFrame {
 public void menuCrearUsuario() {
 		
 		registro = new JPanel();
-		registro.setSize(525, 700);
+		registro.setSize(1000, 600);
 		registro.setLocation(0,0);
 		registro.setLayout(null);
 		registro.setBackground(Color.decode("#dce7ec"));
@@ -513,110 +513,69 @@ public void menuCrearUsuario() {
 		
 		perfil.add(editarPerfil);
 		
-		JLabel iconoLista = new JLabel(new ImageIcon("material-escolar(1).PNG"));
-		iconoLista.setBounds(165, 80, 170, 170);
-		perfil.add(iconoLista);
 		
-		JLabel titleregistro = new JLabel("Registro de Nuevo Usuario",JLabel.CENTER);
-		titleregistro.setFont(new Font("Comic Sans", Font.BOLD,20));
-		titleregistro.setForeground(Color.decode("#ffffff"));
-		titleregistro.setSize(280, 40);
-		titleregistro.setLocation(60,00);
-		titleregistro.setOpaque(true);
-		titleregistro.setBackground(Color.decode("#1f7690"));
-		registro.add(titleregistro);
-	
-		//Etiquetas
-		JLabel nombre = new JLabel("Ingrese sus nombres",JLabel.CENTER);
-		nombre.setFont(new Font("Comic Sans", Font.BOLD,16));
-		nombre.setForeground(Color.decode("#ffffff"));
-		nombre.setSize(250, 20);
-		nombre.setLocation(75, 50);
-		nombre.setOpaque(true);
-		nombre.setBackground(Color.decode("#1f7690"));
-		registro.add(nombre);
-				
-		JLabel apellido = new JLabel("Apellidos",JLabel.CENTER);
-		apellido.setFont(new Font("Comic Sans", Font.BOLD,16));
-		apellido.setForeground(Color.decode("#ffffff"));
-		apellido.setSize(250, 20);
-		apellido.setLocation(75, 105);
-		apellido.setOpaque(true);
-		apellido.setBackground(Color.decode("#1f7690"));
-		registro.add(apellido);
-				
-		JLabel fechaN = new JLabel("Fecha de nacimiento",JLabel.CENTER);
-		fechaN.setFont(new Font("Comic Sans", Font.BOLD,16));
-		fechaN.setForeground(Color.decode("#ffffff"));
-		fechaN.setSize(250, 20);
-		fechaN.setLocation(75, 160);
-		fechaN.setOpaque(true);
-		fechaN.setBackground(Color.decode("#1f7690"));
-		registro.add(fechaN);
-		
-		
-		JLabel correoregistro = new JLabel("Ingrese su correo electronico",JLabel.CENTER);
-		correoregistro.setFont(new Font("Comic Sans", Font.BOLD,16));
-		correoregistro.setForeground(Color.decode("#ffffff"));
-		correoregistro.setSize(250, 30);
-		correoregistro.setLocation(75, 215);
-		correoregistro.setOpaque(true);
-		correoregistro.setBackground(Color.decode("#1f7690"));
-		registro.add(correoregistro);
-		
-
-		JLabel NumeroDeTelefono = new JLabel("Numero Telefonico",JLabel.CENTER);
-		NumeroDeTelefono.setFont(new Font("Comic Sans", Font.BOLD,16));
-		NumeroDeTelefono.setForeground(Color.decode("#ffffff"));
-		NumeroDeTelefono.setSize(250, 30);
-		NumeroDeTelefono.setLocation(75, 280);
-		NumeroDeTelefono.setOpaque(true);
-		NumeroDeTelefono.setBackground(Color.decode("#1f7690"));
-		registro.add(NumeroDeTelefono);
-		
-		JLabel contrasena = new JLabel("Ingrese una contraseña",JLabel.CENTER);
-		contrasena.setFont(new Font("Comic Sans", Font.BOLD,16));
-		contrasena.setForeground(Color.decode("#ffffff"));
-		contrasena.setSize(250, 30);
-		contrasena.setLocation(75, 345);
-		contrasena.setOpaque(true);
-		contrasena.setBackground(Color.decode("#1f7690"));
-		registro.add(contrasena);
 
 
 		//Campo Para Escribir
 		//Nombres
-		JTextField username = new JTextField();
-		username.setSize(250, 30);
-		username.setLocation(75, 70);
+		JTextField username = new JTextField("Nombre");
+		username.setSize(283, 34);
+		username.setLocation(390, 214);
+		username.setOpaque(false);
+		username.setForeground(Color.decode("#9F9E9D"));
+		username.setBackground(Color.decode("#5C87C0"));
 		registro.add(username);
+		JLabel iconoA = new JLabel(new ImageIcon("iconoA.PNG"));
+		iconoA.setBounds(356, 214, 34, 34);
+		registro.add(iconoA); 
 		
 		//Apellido
-		JTextField apellidos = new JTextField();
-		apellidos.setSize(250, 30);
-		apellidos.setLocation(75, 125);
+		JTextField apellidos = new JTextField("Apellido");
+		apellidos.setSize(283, 34);
+		apellidos.setLocation(390, 270);
+		apellidos.setOpaque(false);
+		apellidos.setForeground(Color.decode("#9F9E9D"));
+		apellidos.setBackground(Color.decode("#5C87C0"));
 		registro.add(apellidos);
-		
+		JLabel iconoA1 = new JLabel(new ImageIcon("iconoA.PNG"));
+		iconoA1.setBounds(356, 270, 34, 34);
+		registro.add(iconoA1); 
 		
 		//Fecha de nacimiento
-		JTextField FechaN = new JTextField();
-		FechaN.setSize(250, 30);
-		FechaN.setLocation(75, 180);
+		JTextField FechaN = new JTextField("Fecha de nacimiento");
+		FechaN.setSize(283, 34);
+		FechaN.setLocation(390, 326);
+		FechaN.setOpaque(false);
+		FechaN.setForeground(Color.decode("#9F9E9D"));
+		FechaN.setBackground(Color.decode("#5C87C0"));
 		registro.add(FechaN);
-		
+		JLabel iconoA2 = new JLabel(new ImageIcon("iconoA.PNG"));
+		iconoA2.setBounds(356, 326, 34, 34);
+		registro.add(iconoA2); 
 		
 		//Correo electronico
-		JTextField Correo= new JTextField();
-		Correo.setSize(250, 30);
-		Correo.setLocation(75, 245);
+		JTextField Correo= new JTextField("Email");
+		Correo.setSize(283, 34);
+		Correo.setLocation(390, 382);
+		Correo.setOpaque(false);
+		Correo.setForeground(Color.decode("#9F9E9D"));
+		Correo.setBackground(Color.decode("#5C87C0"));
 		registro.add(Correo);
-		
+		JLabel iconoA3 = new JLabel(new ImageIcon("iconoA.PNG"));
+		iconoA3.setBounds(356, 382, 34, 34);
+		registro.add(iconoA3); 
 		
 		//Numero de telefono
-		JTextField Num = new JTextField();
-		Num.setSize(250, 30);
-		Num.setLocation(75, 310);
+		JTextField Num = new JTextField("Num.Celular");
+		Num.setSize(283, 34);
+		Num.setLocation(390, 438);
+		Num.setOpaque(false);
+		Num.setForeground(Color.decode("#9F9E9D"));
+		Num.setBackground(Color.decode("#5C87C0"));
 		registro.add(Num);
+		JLabel iconoA4 = new JLabel(new ImageIcon("iconoA.PNG"));
+		iconoA4.setBounds(356, 438, 34, 34);
+		registro.add(iconoA4); 
 		 Num.addKeyListener(new KeyAdapter() {
 	            public void keyTyped(KeyEvent e) {
 	                char character = e.getKeyChar();
@@ -630,20 +589,21 @@ public void menuCrearUsuario() {
 		
 		
 		//contraseña
-		JPasswordField password = new JPasswordField();
-		password.setSize(250, 30);
-		password.setLocation(75, 370);
+		JPasswordField password = new JPasswordField("Contraseña");
+		password.setSize(283, 34);
+		password.setLocation(390, 494);
+		password.setOpaque(false);
+		password.setForeground(Color.decode("#9F9E9D"));
+		password.setBackground(Color.decode("#5C87C0"));
+		registro.add(Num);
 		registro.add(password);
+		JLabel iconoA5 = new JLabel(new ImageIcon("iconoA.PNG"));
+		iconoA5.setBounds(356, 494, 34, 34);
+		registro.add(iconoA5);
 		
-		JLabel tyc = new JLabel("Terminos y condiciones",JLabel.CENTER);
-		tyc.setFont(new Font("Comic Sans", Font.BOLD,16));
-		tyc.setForeground(Color.decode("#ffffff"));
-		tyc.setSize(250, 40);
-		tyc.setLocation(75, 410);
-		tyc.setOpaque(true);
-		tyc.setBackground(Color.decode("#1f7690"));
-		registro.add(tyc);
-		
+
+		/*
+
 		JRadioButton acepto = new JRadioButton("Acepto");
 		acepto.setSize(100, 20);
 		acepto.setLocation(75, 460);
@@ -653,23 +613,25 @@ public void menuCrearUsuario() {
 		
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(acepto);
-		
+		*/
 		JButton finalregistro = new JButton();
-		finalregistro.setText("Aceptar");
-		finalregistro.setSize(100, 40);
-		finalregistro.setLocation(100, 550);
-		finalregistro.setOpaque(true);
-		finalregistro.setBackground(Color.white);
+		finalregistro.setText("Registrarse");
+		finalregistro.setSize(200, 20);
+		finalregistro.setLocation(356, 530);
+		finalregistro.setOpaque(false);
+		finalregistro.setForeground(Color.decode("#9F9E9D"));
+		finalregistro.setBackground(Color.decode("#5C87C0"));
 		registro.add(finalregistro);
 
 		JButton cancelar = new JButton();
 		cancelar.setText("Cancelar");
 		cancelar.setSize(90, 20);
-		cancelar.setLocation(300, 570);
-		cancelar.setOpaque(true);
-		cancelar.setBackground(Color.white);
+		cancelar.setLocation(570, 530);
+		cancelar.setOpaque(false);
+		cancelar.setForeground(Color.decode("#9F9E9D"));
+		cancelar.setBackground(Color.decode("#5C87C0"));
 		registro.add(cancelar);
-		//--------------------------------------------------------------------CAMPA
+		//--------------------------------------------------------------------
 		
 		JButton colocarImagen = new JButton();
 		colocarImagen.setText("Colocar Imagen");
@@ -677,7 +639,7 @@ public void menuCrearUsuario() {
 		colocarImagen.setBackground(Color.white);
 		registro.add(colocarImagen);
 		
-		colocarImagen.addActionListener(new ActionListener() {//MENSAJE CAMPA: LE PUSE FUNCIONALIDAD AL BOTÓN CANCELAR
+		colocarImagen.addActionListener(new ActionListener() {
 
 			@Override
 		    public void actionPerformed(ActionEvent e) {
@@ -697,7 +659,7 @@ public void menuCrearUsuario() {
 		    }
 			
 		});
-	if(docente) {//CAMPA
+	/*if(docente) {
 		//PANEL
 		registro.setSize(400,600);
 		registro.setLocation(50,10);
@@ -770,9 +732,17 @@ public void menuCrearUsuario() {
 				
 			});
 			
-			}
+			}*/
 
-		
+		finalregistro.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				CrearUsuario(username, apellidos, FechaN, Correo, Num, password, imagen);
+			}
+			
+		});
 		cancelar.addActionListener(new ActionListener() {
 
 			@Override
@@ -789,8 +759,8 @@ public void menuCrearUsuario() {
 		
 		//--------------------------------------------------------------------
 		
-		JLabel fondo = new JLabel(new ImageIcon("fondo.PNG"));
-		fondo.setBounds(-2, 1, 525, 700);//ANCHO X, Y,TAMAÑO
+		JLabel fondo = new JLabel(new ImageIcon("hotel2.PNG"));
+		fondo.setBounds(-2, 1, 1000, 600);//ANCHO X, Y,TAMAÑO
 		registro.add(fondo);
 
 		anterior=actual;
