@@ -45,12 +45,12 @@ public class Ventana extends JFrame {
 	
 	public Ventana() {
 		this.setVisible(true);
-		this.setSize(1440, 1024);
+		this.setSize(1000, 600);
 		this.setLocationRelativeTo(null);
 		this.setTitle("Menu Principal");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
-		this.getContentPane().setBackground(Color.decode("#dce7ec"));
+		this.getContentPane().setBackground(Color.decode("#101010"));
 		
 		getMaestros();
 	
@@ -70,7 +70,7 @@ public class Ventana extends JFrame {
 		TimerTask tarea = new TimerTask() {
 			@Override
 			public void run() {
-				filtroUsuarios();
+				Login();
 			}
 		};
 		
@@ -82,21 +82,21 @@ public class Ventana extends JFrame {
 	public void Bienvenida() {
 
 		bienvenida = new JPanel();
-		bienvenida.setSize(1440, 1024);
+		bienvenida.setSize(1000, 600);
 		bienvenida.setLocation(0,0);
 		bienvenida.setLayout(null);
-        bienvenida.setBackground(Color.decode("#dce7ec"));
+        bienvenida.setBackground(Color.decode("#101010"));
 		
 		JLabel titleinicio = new JLabel("Inicio",JLabel.CENTER);
 		titleinicio.setFont(new Font("Comic Sans", Font.BOLD,30));
 		titleinicio.setSize(260, 40);
 		titleinicio.setLocation(130, 200);
 		titleinicio.setOpaque(false);
-		titleinicio.setBackground(Color.decode("#1f7690"));
+		titleinicio.setBackground(Color.decode("#101010"));
 		bienvenida.add(titleinicio);
 		
 		JLabel fondo = new JLabel(new ImageIcon("logo.PNG"));
-		fondo.setBounds(-2, 1, 658, 269);//ANCHO X, Y,TAMAÑO EC0307 008299
+		fondo.setBounds(175, 150, 658, 269);//ANCHO X, Y,TAMAÑO EC0307 008299
 		bienvenida.add(fondo);
 	
 		
@@ -113,7 +113,7 @@ public class Ventana extends JFrame {
 	
 	public void menuMiCuenta() {//Panel menuMicuenta realizado por Garayzar Ricardo
 		miCuentaPanel = new JPanel();
-		miCuentaPanel.setSize(525,700);
+		miCuentaPanel.setSize(1000, 600);
 		miCuentaPanel.setLocation(0,0);
 		miCuentaPanel.setLayout(null);
 	    miCuentaPanel.setBackground(Color.decode("#dce7ec"));
@@ -230,14 +230,14 @@ public class Ventana extends JFrame {
 	}
 	
 	
-	public void Login () {//panel Login realizado por Garayzar Ricardo
+	public void Login () {
 		login = new JPanel();
-		login.setSize(525, 700);//COMENTARIO DE CAMPA: MODIFIQUE EL TAMAÑO Y LA UBICACION DEL PANEL
+		login.setSize(1000, 600);//COMENTARIO DE CAMPA: MODIFIQUE EL TAMAÑO Y LA UBICACION DEL PANEL
 		login.setLocation(0,0);
 		login.setLayout(null);
         login.setBackground(Color.decode("#dce7ec"));
 		
-		JLabel titleinicio = new JLabel("Iniciar Sesion",JLabel.CENTER);//COMENTARIO DE CAMPA: MODIFIQUE LAS POSICIONES
+		JLabel titleinicio = new JLabel("Iniciar Sesion",JLabel.CENTER);
 		titleinicio.setFont(new Font("Comic Sans", Font.BOLD,20));
 		titleinicio.setSize(280, 40);
 		titleinicio.setLocation(125, 40);//60
@@ -301,7 +301,7 @@ public class Ventana extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				remove(actual);
-				filtroUsuarios();
+				//filtroUsuarios();
 				repaint();
 				revalidate();
 			}
@@ -413,8 +413,8 @@ public class Ventana extends JFrame {
 		btn4.setBounds(290, 225, 100, 40);
 		login.add(btn4);
 		
-		JLabel fondo = new JLabel(new ImageIcon("fondo.PNG"));//COMENTARIO DE CAMPA: AÑADI FONDO
-		fondo.setBounds(-2, 1, 525, 700);
+		JLabel fondo = new JLabel(new ImageIcon("hotel.PNG")); //FONDO
+		fondo.setBounds(-2, 1, 1000, 600);
 		login.add(fondo); 
 	
 		
@@ -426,10 +426,10 @@ public class Ventana extends JFrame {
 		repaint();
 		revalidate();
 }	
-	
-	public void filtroUsuarios () {//CAMPA
+	/*
+	public void filtroUsuarios () {
 		filtroUsuarios = new JPanel();
-		filtroUsuarios.setSize(525, 700);
+		filtroUsuarios.setSize(1000, 600);
 		filtroUsuarios.setLocation(0,0);
 		filtroUsuarios.setLayout(null);
 		filtroUsuarios.setBackground(Color.decode("#008299"));
@@ -488,7 +488,7 @@ public class Ventana extends JFrame {
 		btn2.setBounds(320, 225, 100, 40);
 		filtroUsuarios.add(btn2);
 		
-		JLabel fondo = new JLabel(new ImageIcon("fondo.PNG"));
+		JLabel fondo = new JLabel(new ImageIcon("hotel.PNG"));
 		fondo.setBounds(-2, 1, 525, 700);
 		filtroUsuarios.add(fondo);
 		
@@ -499,7 +499,7 @@ public class Ventana extends JFrame {
 		
 		repaint();
 		revalidate();
-}	
+}	*/
 	public String buscarImagen() {
 		JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -1012,7 +1012,7 @@ public void menuCrearUsuario() {
 		    }
 		});
 		
-		cerrarSesionMenuItem.addActionListener(new ActionListener() {
+		/*cerrarSesionMenuItem.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        
@@ -1023,7 +1023,7 @@ public void menuCrearUsuario() {
 		    	filtroUsuarios();
 		    	
 		    }
-		});
+		});*/
 		
 		
 		
