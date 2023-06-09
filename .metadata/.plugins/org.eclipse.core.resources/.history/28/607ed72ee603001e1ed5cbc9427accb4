@@ -1,0 +1,26 @@
+import java.awt.*;
+
+import javax.swing.*;
+
+public class Ventana {
+
+	public Ventana() {
+		this.setVisible(true);
+		this.setSize(525, 700);
+		this.setLocationRelativeTo(null);
+		this.setTitle("Menu Principal");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(null);
+		this.getContentPane().setBackground(Color.decode("#dce7ec"));
+		
+		getMaestros();
+	
+		Bienvenida();
+		timer();
+		repaint();
+		revalidate();
+		
+		
+	}
+	
+}
