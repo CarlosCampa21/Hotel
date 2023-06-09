@@ -36,8 +36,8 @@ public class Ventana extends JFrame {
 	private int posicionUsuario;
 	
     private JPanel filtroUsuarios;
-    private boolean estudiante = false;
-    private boolean docente = false;
+    private boolean estudiante = true;
+    private boolean docente = true;
 
 	private DefaultTableModel modelo;
 
@@ -111,7 +111,7 @@ public class Ventana extends JFrame {
 	
 		
 	
-	public void menuMiCuenta() {//Panel menuMicuenta realizado por Garayzar Ricardo
+	public void menuMiCuenta() {
 		miCuentaPanel = new JPanel();
 		miCuentaPanel.setSize(1000, 600);
 		miCuentaPanel.setLocation(0,0);
@@ -232,7 +232,7 @@ public class Ventana extends JFrame {
 	
 	public void Login () {
 		login = new JPanel();
-		login.setSize(1000, 600);//COMENTARIO DE CAMPA: MODIFIQUE EL TAMAÑO Y LA UBICACION DEL PANEL
+		login.setSize(1000, 600);
 		login.setLocation(0,0);
 		login.setLayout(null);
         login.setBackground(Color.decode("#dce7ec"));
@@ -257,15 +257,7 @@ public class Ventana extends JFrame {
 		registro.setBackground(Color.decode("#5C87C0"));		
 		login.add(registro);
 		
-		JLabel iconoA = new JLabel(new ImageIcon("iconoA.PNG"));
-		iconoA.setBounds(404, 216, 34, 34);
-		login.add(iconoA); 
-
-		JLabel iconoB = new JLabel(new ImageIcon("iconoB.PNG"));
-		iconoB.setBounds(404, 280, 34, 34);
-		login.add(iconoB);
-		
-		JTextField username = new JTextField("Rick_21@alu.uabcs.mx");
+		JTextField username = new JTextField("ZENT_01@alu.uabcs.mx");
 		username.setSize(185, 34);
 		username.setLocation(438, 216);
 		username.setOpaque(true);
@@ -273,7 +265,7 @@ public class Ventana extends JFrame {
 		username.setBackground(Color.decode("#1C1E24"));
 		login.add(username);
 		
-		JPasswordField password = new JPasswordField("12345");
+		JPasswordField password = new JPasswordField("1");
 		password.setSize(185, 34);
 		password.setLocation(438, 280);
 		password.setOpaque(true);
@@ -281,20 +273,22 @@ public class Ventana extends JFrame {
 		password.setBackground(Color.decode("#1C1E24"));
 		login.add(password);
 		
-		iniciarSesion.addActionListener(new ActionListener() {
+		registro.addActionListener(new ActionListener() {
 			@Override
 			
 			public void actionPerformed(ActionEvent e) {
 
 				remove(actual);
-				//filtroUsuarios();
+				//filtroUsuarios();	
+				//Perfil();
+				menuCrearUsuario();
 				repaint();
 				revalidate();
 			}
 			
 		});
 		
-		registro.addActionListener(new ActionListener() {
+		iniciarSesion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
@@ -344,9 +338,9 @@ public class Ventana extends JFrame {
 							JOptionPane.showMessageDialog(null, "Usuario incorrecto","ERROR",JOptionPane.ERROR_MESSAGE );
 						}
 						
-					}//FIN DEL IF ESTUDIANTES
+					}//FIN DEL IF 
 					else {
-						if(docente==true) {//CAMPA
+						if(docente==true) {
 							if(!user.contains("@alu.uabcs.mx") && user.contains("@uabcs.mx")) {
 								while(line != null) {
 									
@@ -390,7 +384,16 @@ public class Ventana extends JFrame {
 			}
 			
 		});
-	
+
+		
+		JLabel iconoA = new JLabel(new ImageIcon("iconoA.PNG"));
+		iconoA.setBounds(404, 216, 34, 34);
+		login.add(iconoA); 
+
+		JLabel iconoB = new JLabel(new ImageIcon("iconoB.PNG"));
+		iconoB.setBounds(404, 280, 34, 34);
+		login.add(iconoB);
+		
 		JLabel fondo = new JLabel(new ImageIcon("hotel1.PNG")); //FONDO
 		fondo.setBounds(-2, 1, 1000, 600);
 		login.add(fondo); 
@@ -478,7 +481,7 @@ public class Ventana extends JFrame {
 		
 		repaint();
 		revalidate();
-}	*/
+}*/
 	public String buscarImagen() {
 		JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -926,7 +929,7 @@ public void menuCrearUsuario() {
 	
 	public void Perfil() {
 		perfil = new JPanel();
-		perfil.setSize(525,700);
+		perfil.setSize(1000,600);
 		perfil.setLocation(0,0);
 		perfil.setLayout(null);
 		perfil.setBackground(Color.decode("#dce7ec"));
@@ -952,15 +955,14 @@ public void menuCrearUsuario() {
 		usuariosMenu.add(downloadInfo);
 
 		
-		
+		/*
 		JLabel bienvenidaPerfil = new JLabel();
 		bienvenidaPerfil.setText("Bienvenido "+ nombre);
 		bienvenidaPerfil.setBounds(100, 10, 300, 80);
 		bienvenidaPerfil.setHorizontalAlignment(SwingConstants.CENTER);
 		bienvenidaPerfil.setForeground(Color.BLACK);
 		bienvenidaPerfil.setFont(new Font("cooper black",0,25));
-		
-		perfil.add(bienvenidaPerfil);
+		perfil.add(bienvenidaPerfil);*/
 		
 		JLabel iconoLista = new JLabel(new ImageIcon("material-escolar(1).PNG"));
 		iconoLista.setBounds(165, 80, 170, 170);
@@ -991,18 +993,18 @@ public void menuCrearUsuario() {
 		    }
 		});
 		
-		/*cerrarSesionMenuItem.addActionListener(new ActionListener() {
+		cerrarSesionMenuItem.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        
 		    	JOptionPane.showMessageDialog(null,"Adios "+nombre,"Bye bye", JOptionPane.CLOSED_OPTION );
 		    	menuBar.remove(cuentaMenu);
 		    	menuBar.remove(usuariosMenu);
-		    	
-		    	filtroUsuarios();
+		    	Login();
+		    	//filtroUsuarios();
 		    	
 		    }
-		});*/
+		});
 		
 		
 		
@@ -1031,8 +1033,8 @@ public void menuCrearUsuario() {
 			
 		});
 		
-		JLabel fondo = new JLabel(new ImageIcon("fondo.PNG"));
-		fondo.setBounds(-2, 1, 525, 700);//ANCHO X, Y,TAMAÑO
+		JLabel fondo = new JLabel(new ImageIcon("FondoInicio1.PNG"));
+		fondo.setBounds(-2, 1, 1000, 600);//ANCHO X, Y,TAMAÑO
 		perfil.add(fondo);
 
 		anterior=actual;
