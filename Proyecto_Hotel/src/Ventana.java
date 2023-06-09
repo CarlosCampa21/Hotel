@@ -47,7 +47,7 @@ public class Ventana extends JFrame {
 		this.setVisible(true);
 		this.setSize(1000, 600);
 		this.setLocationRelativeTo(null);
-		this.setTitle("Menu Principal");
+		this.setTitle("ZENT");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
 		this.getContentPane().setBackground(Color.decode("#101010"));
@@ -86,14 +86,14 @@ public class Ventana extends JFrame {
 		bienvenida.setLocation(0,0);
 		bienvenida.setLayout(null);
         bienvenida.setBackground(Color.decode("#101010"));
-		
+		/*
 		JLabel titleinicio = new JLabel("Inicio",JLabel.CENTER);
 		titleinicio.setFont(new Font("Comic Sans", Font.BOLD,30));
 		titleinicio.setSize(260, 40);
 		titleinicio.setLocation(130, 200);
 		titleinicio.setOpaque(false);
 		titleinicio.setBackground(Color.decode("#101010"));
-		bienvenida.add(titleinicio);
+		bienvenida.add(titleinicio);*/
 		
 		JLabel fondo = new JLabel(new ImageIcon("logo.PNG"));
 		fondo.setBounds(175, 150, 658, 269);//ANCHO X, Y,TAMAÑO EC0307 008299
@@ -237,65 +237,51 @@ public class Ventana extends JFrame {
 		login.setLayout(null);
         login.setBackground(Color.decode("#dce7ec"));
 		
-		JLabel titleinicio = new JLabel("Iniciar Sesion",JLabel.CENTER);
-		titleinicio.setFont(new Font("Comic Sans", Font.BOLD,20));
-		titleinicio.setSize(280, 40);
-		titleinicio.setLocation(125, 40);//60
-		titleinicio.setOpaque(false);
-		titleinicio.setForeground(Color.decode("#27374F"));
-		titleinicio.setBackground(Color.decode("#608AC5"));
-		login.add(titleinicio);
+
+
+		JButton iniciarSesion = new JButton();
+		iniciarSesion.setText("Iniciar Sesión");
+		iniciarSesion.setSize(115, 20);
+		iniciarSesion.setLocation(394, 350);
+		iniciarSesion.setOpaque(false);
+		iniciarSesion.setForeground(Color.decode("#9F9E9D"));
+		iniciarSesion.setBackground(Color.decode("#5C87C0"));
+		login.add(iniciarSesion);
 		
-		JLabel usuario = new JLabel("Ingrese su usuario",JLabel.CENTER);
-		usuario.setFont(new Font("Comic Sans", Font.BOLD,16));
-		usuario.setSize(250, 20);
-		usuario.setLocation(140, 95);//75
-		usuario.setOpaque(true);
-		usuario.setForeground(Color.decode("#27374F"));
-		usuario.setBackground(Color.decode("#5C87C0"));
-		login.add(usuario);
+		JButton registro = new JButton();
+		registro.setText("Registrarse");
+		registro.setSize(115, 20);
+		registro.setLocation(515, 350);//1C1E24	9F9E9D
+		registro.setOpaque(false);
+		registro.setForeground(Color.decode("#9F9E9D"));
+		registro.setBackground(Color.decode("#5C87C0"));		
+		login.add(registro);
 		
+		JLabel iconoA = new JLabel(new ImageIcon("iconoA.PNG"));
+		iconoA.setBounds(404, 216, 34, 34);
+		login.add(iconoA); 
 
-
-		JLabel iniciarcontraseña = new JLabel("Contraseña",JLabel.CENTER);
-		iniciarcontraseña.setFont(new Font("Comic Sans", Font.BOLD,16));
-		iniciarcontraseña.setSize(250, 30);
-		iniciarcontraseña.setLocation(140, 155);
-		iniciarcontraseña.setOpaque(true);
-		iniciarcontraseña.setForeground(Color.decode("#27374F"));
-		iniciarcontraseña.setBackground(Color.decode("#5C87C0"));
-		login.add(iniciarcontraseña);
-
-		
-
-
-		JButton entrarcuentar = new JButton();
-		entrarcuentar.setText("Aceptar");
-		entrarcuentar.setSize(100, 40);
-		entrarcuentar.setLocation(140, 225);
-		entrarcuentar.setOpaque(false);
-		entrarcuentar.setBackground(Color.white);
-		login.add(entrarcuentar);
-		
-		JButton salir = new JButton();
-		salir.setText("Salir");
-		salir.setSize(100, 40);
-		salir.setLocation(290, 225);//225
-		salir.setOpaque(false);
-		salir.setBackground(Color.white);
-		login.add(salir);
+		JLabel iconoB = new JLabel(new ImageIcon("iconoB.PNG"));
+		iconoB.setBounds(404, 280, 34, 34);
+		login.add(iconoB);
 		
 		JTextField username = new JTextField("Rick_21@alu.uabcs.mx");
-		username.setSize(250, 30);
-		username.setLocation(140, 120);
+		username.setSize(185, 34);
+		username.setLocation(438, 216);
+		username.setOpaque(true);
+		username.setForeground(Color.decode("#828387"));
+		username.setBackground(Color.decode("#1C1E24"));
 		login.add(username);
 		
 		JPasswordField password = new JPasswordField("12345");
-		password.setSize(250, 30);
-		password.setLocation(140, 190);
+		password.setSize(185, 34);
+		password.setLocation(438, 280);
+		password.setOpaque(true);
+		password.setForeground(Color.decode("#828387"));
+		password.setBackground(Color.decode("#1C1E24"));
 		login.add(password);
-
-		salir.addActionListener(new ActionListener() {
+		
+		iniciarSesion.addActionListener(new ActionListener() {
 			@Override
 			
 			public void actionPerformed(ActionEvent e) {
@@ -308,7 +294,7 @@ public class Ventana extends JFrame {
 			
 		});
 		
-		entrarcuentar.addActionListener(new ActionListener() {
+		registro.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
@@ -404,19 +390,12 @@ public class Ventana extends JFrame {
 			}
 			
 		});
-		
-		JLabel btn3 = new JLabel(new ImageIcon("boton.PNG"));
-		btn3.setBounds(140, 225, 100, 40);
-		login.add(btn3);
-		
-		JLabel btn4 = new JLabel(new ImageIcon("boton.PNG"));
-		btn4.setBounds(290, 225, 100, 40);
-		login.add(btn4);
-		
-		JLabel fondo = new JLabel(new ImageIcon("hotel.PNG")); //FONDO
+	
+		JLabel fondo = new JLabel(new ImageIcon("hotel1.PNG")); //FONDO
 		fondo.setBounds(-2, 1, 1000, 600);
 		login.add(fondo); 
-	
+		
+
 		
 		anterior=actual;
 		actual=login;
