@@ -281,11 +281,11 @@ public class Ventana extends JFrame {
 				remove(actual);
 				//filtroUsuarios();	
 				//Perfil();
+				
 				menuCrearUsuario();
 				repaint();
 				revalidate();
-			}
-			
+			}	
 		});
 		
 		iniciarSesion.addActionListener(new ActionListener() {
@@ -511,11 +511,7 @@ public void menuCrearUsuario() {
 		editarPerfil.setForeground(Color.BLACK);
 		editarPerfil.setFont(new Font("cooper black",0,25));
 		
-		perfil.add(editarPerfil);
-		
-		
-
-
+		//perfil.add(editarPerfil);
 		//Campo Para Escribir
 		//Nombres
 		JTextField username = new JTextField("Nombre");
