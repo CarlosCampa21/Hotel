@@ -28,7 +28,7 @@ public class Ventana extends JFrame {
 	
 	JTable table;
 
-	private String[] UsuariosColumns = {"Nombre", "Apellido", "Fecha de nacimiento", "Correo", "Telefono","Contraseña"};
+	private String[] maestrosColumns = {"Nombre", "Apellido", "Fecha de nacimiento", "Correo", "Telefono","Contraseña"};
 	
 	ArrayList<String[]> usersList;
 	
@@ -579,7 +579,7 @@ public class Ventana extends JFrame {
 		consultar.setLayout(null);
         consultar.setBackground(Color.decode("#dce7ec"));
 	
-        JScrollPane scroll = new JScrollPane(new Tabla(getUsuarios(), UsuariosColumns));
+        JScrollPane scroll = new JScrollPane(new Tabla(getUsuarios(), maestrosColumns));
         scroll.setBounds(50, 230, 880, 300);
         scroll.setVisible(true);
         consultar.add(scroll);
@@ -951,7 +951,7 @@ public class Ventana extends JFrame {
 	
 	public Object[][] getUsuarios() {
 		
-		Object[][] data = new Object[getNumeroUsuarios()][UsuariosColumns.length];
+		Object[][] data = new Object[getNumeroUsuarios()][maestrosColumns.length];
 		
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
