@@ -122,7 +122,12 @@ public class Ventana extends JFrame {
 		editarPerfil.setFont(new Font("cooper black",0,25));
 		miCuentaPanel.add(editarPerfil);
 
-//---------------------------------
+		JLabel editarPerfil = new JLabel();
+		editarPerfil.setText("Editar Perfil");
+		editarPerfil.setBounds(100, 10, 300, 80);
+		editarPerfil.setHorizontalAlignment(SwingConstants.CENTER);
+		editarPerfil.setForeground(Color.BLACK);
+		editarPerfil.setFont(new Font("cooper black",0,25));
 
 		JTextField username = new JTextField("Nombre");
 		username.setSize(283, 34);
@@ -130,10 +135,10 @@ public class Ventana extends JFrame {
 		username.setOpaque(false);
 		username.setForeground(Color.decode("#9F9E9D"));
 		username.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(username);
+		registro.add(username);
 		JLabel iconoA = new JLabel(new ImageIcon("iconoA.PNG"));
 		iconoA.setBounds(356, 214, 34, 34);
-		miCuentaPanel.add(iconoA); 
+		registro.add(iconoA); 
 		
 		//Apellido
 		JTextField apellidos = new JTextField("Apellido");
@@ -142,10 +147,10 @@ public class Ventana extends JFrame {
 		apellidos.setOpaque(false);
 		apellidos.setForeground(Color.decode("#9F9E9D"));
 		apellidos.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(apellidos);
+		registro.add(apellidos);
 		JLabel iconoA1 = new JLabel(new ImageIcon("iconoA.PNG"));
 		iconoA1.setBounds(356, 270, 34, 34);
-		miCuentaPanel.add(iconoA1); 
+		registro.add(iconoA1); 
 		
 		//Fecha de nacimiento
 		JTextField FechaN = new JTextField("Fecha de nacimiento");
@@ -154,10 +159,10 @@ public class Ventana extends JFrame {
 		FechaN.setOpaque(false);
 		FechaN.setForeground(Color.decode("#9F9E9D"));
 		FechaN.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(FechaN);
+		registro.add(FechaN);
 		JLabel iconoA2 = new JLabel(new ImageIcon("iconoA.PNG"));
 		iconoA2.setBounds(356, 326, 34, 34);
-		miCuentaPanel.add(iconoA2); 
+		registro.add(iconoA2); 
 		
 		//Correo electronico
 		JTextField Correo= new JTextField("Email");
@@ -166,10 +171,10 @@ public class Ventana extends JFrame {
 		Correo.setOpaque(false);
 		Correo.setForeground(Color.decode("#9F9E9D"));
 		Correo.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(Correo);
+		registro.add(Correo);
 		JLabel iconoA3 = new JLabel(new ImageIcon("iconoA.PNG"));
 		iconoA3.setBounds(356, 382, 34, 34);
-		miCuentaPanel.add(iconoA3); 
+		registro.add(iconoA3); 
 		
 		//Numero de telefono
 		JTextField Num = new JTextField("Num.Celular");
@@ -178,10 +183,10 @@ public class Ventana extends JFrame {
 		Num.setOpaque(false);
 		Num.setForeground(Color.decode("#9F9E9D"));
 		Num.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(Num);
+		registro.add(Num);
 		JLabel iconoA4 = new JLabel(new ImageIcon("iconoA.PNG"));
 		iconoA4.setBounds(356, 438, 34, 34);
-		miCuentaPanel.add(iconoA4); 
+		registro.add(iconoA4); 
 		 Num.addKeyListener(new KeyAdapter() {
 	            public void keyTyped(KeyEvent e) {
 	                char character = e.getKeyChar();
@@ -201,20 +206,20 @@ public class Ventana extends JFrame {
 		password.setOpaque(false);
 		password.setForeground(Color.decode("#9F9E9D"));
 		password.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(Num);
-		miCuentaPanel.add(password);
+		registro.add(Num);
+		registro.add(password);
 		JLabel iconoA5 = new JLabel(new ImageIcon("iconoA.PNG"));
 		iconoA5.setBounds(356, 494, 34, 34);
-		miCuentaPanel.add(iconoA5);
+		registro.add(iconoA5);
 		
 		JButton finalregistro = new JButton();
-		finalregistro.setText("Actualizar datos");
+		finalregistro.setText("Registrarse");
 		finalregistro.setSize(200, 20);
 		finalregistro.setLocation(356, 530);
 		finalregistro.setOpaque(false);
 		finalregistro.setForeground(Color.decode("#9F9E9D"));
 		finalregistro.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(finalregistro);
+		registro.add(finalregistro);
 
 		JButton cancelar = new JButton();
 		cancelar.setText("Cancelar");
@@ -223,9 +228,17 @@ public class Ventana extends JFrame {
 		cancelar.setOpaque(false);
 		cancelar.setForeground(Color.decode("#9F9E9D"));
 		cancelar.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(cancelar);
+		registro.add(cancelar);
+		//_____
+		finalregistro.addActionListener(new ActionListener() {
 
-		//----------------------
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				CrearUsuarios(username, apellidos, FechaN, Correo, Num, password);
+			}
+			
+		});
 		cancelar.addActionListener(new ActionListener() {
 
 			@Override
@@ -247,8 +260,18 @@ public class Ventana extends JFrame {
 		});
 		
 		//--------------------------------------------------------------------
+        JButton cancelButton = new JButton("Cancelar");
+        cancelButton.setBounds(150, 450, 100, 30);
+
+        JButton updateButton = new JButton("Actualizar datos");
+        updateButton.setBounds(260, 450, 130, 30);
+
+
+        miCuentaPanel.add(cancelButton);
+        miCuentaPanel.add(updateButton);
+
         
-        cancelar.addActionListener(new ActionListener() {
+        cancelButton.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        
@@ -256,12 +279,12 @@ public class Ventana extends JFrame {
 		    }
 		});
         
-        finalregistro.addActionListener(new ActionListener() {
+        updateButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				actualizarUsuario(username, apellidos,FechaN, Correo, Num, password, posicionUsuario);
+				actualizarUsuario(nameField, apellidoField, emailField, NumeroTelefono, passwordField, confirmPasswordField, posicionUsuario);
 			    }
         	
         });
@@ -891,21 +914,21 @@ public class Ventana extends JFrame {
 
 	}
 	
-	public void actualizarUsuario(JTextField nombreText, JTextField apellidosText,JTextField fechaN, 
-			JTextField correo, JTextField telefono, JPasswordField contraseñaText, int numUsuario) {
+	public void actualizarUsuario(JTextField nombreText, JTextField apellidosText, 
+			JTextField correo, JTextField telefono, JPasswordField contraseñaText, JPasswordField contraseñaText2, int numUsuario) {
 
 //		CrearUsuario(username, apellidos, FechaN, Correo, Num, password);
 
 
 		//String password = new String(contraseñaText.getPassword());
 		String password = new String(contraseñaText.getPassword());
+		String password2 = new String(contraseñaText2.getPassword());
 		String datosUsuario = "";
 
 		boolean match = false;
 
-		if(password.length() != 0
+		if(password.equals(password2) && password.length() != 0
 				&& nombreText.getText().length() != 0
-				&& fechaN.getText().length() != 0
 				&& apellidosText.getText().length() != 0
 				&& correo.getText().length() != 0) {
 
@@ -922,10 +945,11 @@ public class Ventana extends JFrame {
 
 				datosUsuario = nombreText.getText()+","
 						+apellidosText.getText()+","
-						+fechaN.getText()+","
+						+data[2]+","
 						+correo.getText()+","
-						+telefono.getText()+","
-						+password;
+						+data[4]+","
+						+password
+						+data[6];
 
 				BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
 				String line = reader.readLine();

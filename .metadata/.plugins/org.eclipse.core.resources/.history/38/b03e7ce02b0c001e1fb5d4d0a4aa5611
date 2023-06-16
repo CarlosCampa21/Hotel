@@ -121,134 +121,81 @@ public class Ventana extends JFrame {
 		editarPerfil.setForeground(Color.decode("#1f7690"));
 		editarPerfil.setFont(new Font("cooper black",0,25));
 		miCuentaPanel.add(editarPerfil);
+		
+		JLabel iconoLista = new JLabel(new ImageIcon("material-escolar (1).PNG"));
+		iconoLista.setBounds(165, 80, 170, 170);
+		miCuentaPanel.add(iconoLista);
 
-//---------------------------------
+	    JLabel nameLabel = new JLabel("Nombre:");
+        nameLabel.setBounds(70, 270, 100, 20);
+        JTextField nameField = new JTextField();
+        nameField.setBounds(200, 270, 200, 20);
 
-		JTextField username = new JTextField("Nombre");
-		username.setSize(283, 34);
-		username.setLocation(390, 214);
-		username.setOpaque(false);
-		username.setForeground(Color.decode("#9F9E9D"));
-		username.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(username);
-		JLabel iconoA = new JLabel(new ImageIcon("iconoA.PNG"));
-		iconoA.setBounds(356, 214, 34, 34);
-		miCuentaPanel.add(iconoA); 
-		
-		//Apellido
-		JTextField apellidos = new JTextField("Apellido");
-		apellidos.setSize(283, 34);
-		apellidos.setLocation(390, 270);
-		apellidos.setOpaque(false);
-		apellidos.setForeground(Color.decode("#9F9E9D"));
-		apellidos.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(apellidos);
-		JLabel iconoA1 = new JLabel(new ImageIcon("iconoA.PNG"));
-		iconoA1.setBounds(356, 270, 34, 34);
-		miCuentaPanel.add(iconoA1); 
-		
-		//Fecha de nacimiento
-		JTextField FechaN = new JTextField("Fecha de nacimiento");
-		FechaN.setSize(283, 34);
-		FechaN.setLocation(390, 326);
-		FechaN.setOpaque(false);
-		FechaN.setForeground(Color.decode("#9F9E9D"));
-		FechaN.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(FechaN);
-		JLabel iconoA2 = new JLabel(new ImageIcon("iconoA.PNG"));
-		iconoA2.setBounds(356, 326, 34, 34);
-		miCuentaPanel.add(iconoA2); 
-		
-		//Correo electronico
-		JTextField Correo= new JTextField("Email");
-		Correo.setSize(283, 34);
-		Correo.setLocation(390, 382);
-		Correo.setOpaque(false);
-		Correo.setForeground(Color.decode("#9F9E9D"));
-		Correo.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(Correo);
-		JLabel iconoA3 = new JLabel(new ImageIcon("iconoA.PNG"));
-		iconoA3.setBounds(356, 382, 34, 34);
-		miCuentaPanel.add(iconoA3); 
-		
-		//Numero de telefono
-		JTextField Num = new JTextField("Num.Celular");
-		Num.setSize(283, 34);
-		Num.setLocation(390, 438);
-		Num.setOpaque(false);
-		Num.setForeground(Color.decode("#9F9E9D"));
-		Num.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(Num);
-		JLabel iconoA4 = new JLabel(new ImageIcon("iconoA.PNG"));
-		iconoA4.setBounds(356, 438, 34, 34);
-		miCuentaPanel.add(iconoA4); 
-		 Num.addKeyListener(new KeyAdapter() {
-	            public void keyTyped(KeyEvent e) {
-	                char character = e.getKeyChar();
-	                if (!(Character.isDigit(character) ||
-	                      (character == KeyEvent.VK_BACK_SPACE) ||
-	                      (character == KeyEvent.VK_DELETE))) {
-	                    e.consume();
-	                }
-	            }
-	        });
-		
-		
-		//contraseña
-		JPasswordField password = new JPasswordField("Contraseña");
-		password.setSize(283, 34);
-		password.setLocation(390, 494);
-		password.setOpaque(false);
-		password.setForeground(Color.decode("#9F9E9D"));
-		password.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(Num);
-		miCuentaPanel.add(password);
-		JLabel iconoA5 = new JLabel(new ImageIcon("iconoA.PNG"));
-		iconoA5.setBounds(356, 494, 34, 34);
-		miCuentaPanel.add(iconoA5);
-		
-		JButton finalregistro = new JButton();
-		finalregistro.setText("Actualizar datos");
-		finalregistro.setSize(200, 20);
-		finalregistro.setLocation(356, 530);
-		finalregistro.setOpaque(false);
-		finalregistro.setForeground(Color.decode("#9F9E9D"));
-		finalregistro.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(finalregistro);
+        JLabel apellidoLabel = new JLabel("Apellido:");
+        apellidoLabel.setBounds(70, 300, 100, 20);
+        JTextField apellidoField = new JTextField();
+        apellidoField.setBounds(200, 300, 200, 20);
 
-		JButton cancelar = new JButton();
-		cancelar.setText("Cancelar");
-		cancelar.setSize(90, 20);
-		cancelar.setLocation(570, 530);
-		cancelar.setOpaque(false);
-		cancelar.setForeground(Color.decode("#9F9E9D"));
-		cancelar.setBackground(Color.decode("#5C87C0"));
-		miCuentaPanel.add(cancelar);
-
-		//----------------------
-		cancelar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(registroPrevio == false) {
-				
-				remove(actual);
-				Login();
-				repaint();
-				revalidate();
-				}else {
-				remove(actual);
-				Perfil();
-				repaint();
-				revalidate();
-			
-				}
-			}
-		});
-		
-		//--------------------------------------------------------------------
+        JLabel emailLabel = new JLabel("Email:");
+        emailLabel.setBounds(70, 330, 100, 20);
+        JTextField emailField = new JTextField();
+        emailField.setBounds(200, 330, 200, 20);
         
-        cancelar.addActionListener(new ActionListener() {
+
+        JLabel NumTelefono = new JLabel("Numero telefonico:");
+        NumTelefono.setBounds(70, 360, 110, 20);
+        JTextField NumeroTelefono = new JTextField();
+        NumeroTelefono.setBounds(200, 360, 200, 20);
+        NumeroTelefono.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char character = e.getKeyChar();
+                if (!(Character.isDigit(character) ||
+                      (character == KeyEvent.VK_BACK_SPACE) ||
+                      (character == KeyEvent.VK_DELETE))) {
+                    e.consume();
+                }
+            }
+        });
+        
+        
+
+        JLabel passwordLabel = new JLabel("Contraseña:");
+        passwordLabel.setBounds(70, 390, 100, 20);
+        JPasswordField passwordField = new JPasswordField();
+        passwordField.setBounds(200, 390, 200, 20);
+
+
+        JLabel confirmPasswordLabel = new JLabel("Confirmar contraseña:");
+        confirmPasswordLabel.setBounds(70, 420, 150, 20);
+        JPasswordField confirmPasswordField = new JPasswordField();
+        confirmPasswordField.setBounds(200, 420, 150, 20);
+
+        JButton cancelButton = new JButton("Cancelar");
+        cancelButton.setBounds(150, 450, 100, 30);
+
+        JButton updateButton = new JButton("Actualizar datos");
+        updateButton.setBounds(260, 450, 130, 30);
+
+        miCuentaPanel.add(nameLabel);
+        miCuentaPanel.add(nameField);
+        miCuentaPanel.add(apellidoLabel);
+        miCuentaPanel.add(apellidoField);
+        miCuentaPanel.add(emailLabel);
+        miCuentaPanel.add(emailField);
+        miCuentaPanel.add(NumTelefono);
+        miCuentaPanel.add(NumeroTelefono);
+        miCuentaPanel.add(passwordLabel);
+        miCuentaPanel.add(passwordField);
+        miCuentaPanel.add(confirmPasswordLabel);
+        miCuentaPanel.add(confirmPasswordField);
+        miCuentaPanel.add(cancelButton);
+        miCuentaPanel.add(updateButton);
+
+		JLabel fondo = new JLabel(new ImageIcon("hotel2.PNG"));
+		fondo.setBounds(-2, 1, 1000, 600);//ANCHO X, Y,TAMAÑO
+		miCuentaPanel.add(fondo);
+        
+        cancelButton.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        
@@ -256,21 +203,17 @@ public class Ventana extends JFrame {
 		    }
 		});
         
-        finalregistro.addActionListener(new ActionListener() {
+        updateButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				actualizarUsuario(username, apellidos,FechaN, Correo, Num, password, posicionUsuario);
+				actualizarUsuario(nameField, apellidoField, emailField, NumeroTelefono, passwordField, confirmPasswordField, posicionUsuario);
 			    }
         	
         });
         
-
-		JLabel fondo = new JLabel(new ImageIcon("hotel2.PNG"));
-		fondo.setBounds(-2, 1, 1000, 600);//ANCHO X, Y,TAMAÑO
-		miCuentaPanel.add(fondo);
-		
+        
         anterior = actual;
         actual = miCuentaPanel;
         
@@ -451,7 +394,10 @@ public class Ventana extends JFrame {
 		editarPerfil.setHorizontalAlignment(SwingConstants.CENTER);
 		editarPerfil.setForeground(Color.BLACK);
 		editarPerfil.setFont(new Font("cooper black",0,25));
-
+		
+		//perfil.add(editarPerfil);
+		//Campo Para Escribir
+		//Nombres
 		JTextField username = new JTextField("Nombre");
 		username.setSize(283, 34);
 		username.setLocation(390, 214);
@@ -891,21 +837,21 @@ public class Ventana extends JFrame {
 
 	}
 	
-	public void actualizarUsuario(JTextField nombreText, JTextField apellidosText,JTextField fechaN, 
-			JTextField correo, JTextField telefono, JPasswordField contraseñaText, int numUsuario) {
+	public void actualizarUsuario(JTextField nombreText, JTextField apellidosText, 
+			JTextField correo, JTextField telefono, JPasswordField contraseñaText, JPasswordField contraseñaText2, int numUsuario) {
 
 //		CrearUsuario(username, apellidos, FechaN, Correo, Num, password);
 
 
 		//String password = new String(contraseñaText.getPassword());
 		String password = new String(contraseñaText.getPassword());
+		String password2 = new String(contraseñaText2.getPassword());
 		String datosUsuario = "";
 
 		boolean match = false;
 
-		if(password.length() != 0
+		if(password.equals(password2) && password.length() != 0
 				&& nombreText.getText().length() != 0
-				&& fechaN.getText().length() != 0
 				&& apellidosText.getText().length() != 0
 				&& correo.getText().length() != 0) {
 
@@ -922,10 +868,11 @@ public class Ventana extends JFrame {
 
 				datosUsuario = nombreText.getText()+","
 						+apellidosText.getText()+","
-						+fechaN.getText()+","
+						+data[2]+","
 						+correo.getText()+","
-						+telefono.getText()+","
-						+password;
+						+data[4]+","
+						+password
+						+data[6];
 
 				BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
 				String line = reader.readLine();

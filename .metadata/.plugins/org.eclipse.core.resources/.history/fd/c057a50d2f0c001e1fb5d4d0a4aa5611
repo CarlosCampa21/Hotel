@@ -891,8 +891,8 @@ public class Ventana extends JFrame {
 
 	}
 	
-	public void actualizarUsuario(JTextField nombreText, JTextField apellidosText,JTextField fechaN, 
-			JTextField correo, JTextField telefono, JPasswordField contraseñaText, int numUsuario) {
+	public void actualizarUsuario(JTextField nombreText, JTextField apellidosText, 
+			JTextField correo,JTextField fechaN, JTextField telefono, JPasswordField contraseñaText, int numUsuario) {
 
 //		CrearUsuario(username, apellidos, FechaN, Correo, Num, password);
 
@@ -922,10 +922,11 @@ public class Ventana extends JFrame {
 
 				datosUsuario = nombreText.getText()+","
 						+apellidosText.getText()+","
-						+fechaN.getText()+","
+						+data[2]+","
 						+correo.getText()+","
-						+telefono.getText()+","
-						+password;
+						+data[4]+","
+						+password
+						+data[6];
 
 				BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
 				String line = reader.readLine();

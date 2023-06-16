@@ -1,4 +1,5 @@
-Ricardo,Ortega,15/5/2003,Rick_21@uabcs.mx,6124754512,12345
 Carlos,Andre,28/05/2002,ZENT_01@alu.uabcs.mx,6121837046,1
 Carlos,Andre,28/05/2002,ZENT@uabcs.mx,6121837046,1
 Andre,Carlos,27/06/2002,ZENT2@gmail.com,6121837046,gps10064819
+Mario,Alberto,27/07/2002,Mario@gmail.com,612,1
+Mike,Mendoza,01/01/2002,Mike@gmail.com,612,1

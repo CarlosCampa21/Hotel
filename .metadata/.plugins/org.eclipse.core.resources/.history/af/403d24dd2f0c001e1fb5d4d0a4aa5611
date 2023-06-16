@@ -925,7 +925,8 @@ public class Ventana extends JFrame {
 						+fechaN.getText()+","
 						+correo.getText()+","
 						+telefono.getText()+","
-						+password;
+						+password
+						+data[6];
 
 				BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
 				String line = reader.readLine();

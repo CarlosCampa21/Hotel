@@ -208,7 +208,7 @@ public class Ventana extends JFrame {
 		miCuentaPanel.add(iconoA5);
 		
 		JButton finalregistro = new JButton();
-		finalregistro.setText("Actualizar datos");
+		finalregistro.setText("Registrarse");
 		finalregistro.setSize(200, 20);
 		finalregistro.setLocation(356, 530);
 		finalregistro.setOpaque(false);
@@ -224,7 +224,16 @@ public class Ventana extends JFrame {
 		cancelar.setForeground(Color.decode("#9F9E9D"));
 		cancelar.setBackground(Color.decode("#5C87C0"));
 		miCuentaPanel.add(cancelar);
+		//_____
+		finalregistro.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				CrearUsuarios(username, apellidos, FechaN, Correo, Num, password);
+			}
+			
+		});
 		//----------------------
 		cancelar.addActionListener(new ActionListener() {
 
@@ -247,8 +256,18 @@ public class Ventana extends JFrame {
 		});
 		
 		//--------------------------------------------------------------------
+        JButton cancelButton = new JButton("Cancelar");
+        cancelButton.setBounds(150, 450, 100, 30);
+
+        JButton updateButton = new JButton("Actualizar datos");
+        updateButton.setBounds(260, 450, 130, 30);
+
+
+        miCuentaPanel.add(cancelButton);
+        miCuentaPanel.add(updateButton);
+
         
-        cancelar.addActionListener(new ActionListener() {
+        cancelButton.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        
@@ -891,8 +910,8 @@ public class Ventana extends JFrame {
 
 	}
 	
-	public void actualizarUsuario(JTextField nombreText, JTextField apellidosText,JTextField fechaN, 
-			JTextField correo, JTextField telefono, JPasswordField contraseñaText, int numUsuario) {
+	public void actualizarUsuario(JTextField nombreText, JTextField apellidosText, 
+			JTextField correo,JTextField fechaN, JTextField telefono, JPasswordField contraseñaText, int numUsuario) {
 
 //		CrearUsuario(username, apellidos, FechaN, Correo, Num, password);
 
@@ -922,10 +941,11 @@ public class Ventana extends JFrame {
 
 				datosUsuario = nombreText.getText()+","
 						+apellidosText.getText()+","
-						+fechaN.getText()+","
+						+data[2]+","
 						+correo.getText()+","
-						+telefono.getText()+","
-						+password;
+						+data[4]+","
+						+password
+						+data[6];
 
 				BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
 				String line = reader.readLine();
