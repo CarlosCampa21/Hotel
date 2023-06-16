@@ -28,11 +28,15 @@ public class Ventana extends JFrame {
 	
 	JTable table;
 
-	private String[] maestrosColumns = {"Nombre", "Apellido", "Fecha de nacimiento", "Correo", "Telefono","Contraseña"};
+	private String[] maestrosColumns = {"Nombre", "Apellidos", "Fecha de nacimiento", "Correo", "Telefono","Contraseña"};
 	
 	ArrayList<String[]> usersList;
 	
-	private int posicionUsuario;//TXT
+	private int posicionUsuario;
+	
+    private JPanel filtroUsuarios;
+    private boolean estudiante = true;
+    private boolean docente = true;
     
     //-------
     private boolean registroPrevio = false;
@@ -61,7 +65,7 @@ public class Ventana extends JFrame {
 		
 	}
 	
-	public void timer() {
+	public void timer() {//Funcion timer realizada
 		
 		Timer timer = new Timer();
 		
@@ -299,6 +303,7 @@ public class Ventana extends JFrame {
 					
 					int aux=0;
 					
+				//FILTROS PARA LOS CORREOS DE ESTUDIANTES O DOCENTES
 							while(line != null) {  
 								
 									
@@ -366,7 +371,8 @@ public class Ventana extends JFrame {
 		revalidate();
 }	
 
-	public String buscarImagen() {
+	
+public String buscarImagen() {
 		JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "Archivos de imagen", "jpg", "jpeg", "png", "gif");
@@ -380,7 +386,7 @@ public class Ventana extends JFrame {
         return null;
 	}
 
-	public void menuCrearUsuario() {
+public void menuCrearUsuario() {
 		
 		registro = new JPanel();
 		registro.setSize(1000, 600);
@@ -533,7 +539,7 @@ public class Ventana extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				CrearUsuarios(username, apellidos, FechaN, Correo, Num, password);
+				CrearUsuarioDocente(username, apellidos, FechaN, Correo, Num, password);
 			}
 			
 		});
@@ -571,22 +577,25 @@ public class Ventana extends JFrame {
 		revalidate();
 	}
 
-	public void ConsultarUsuarios() {
+	public void ConsultarUsuario() {
 
 		consultar= new JPanel();
 		consultar.setSize(1000, 600);
 		consultar.setLocation(0,0);
 		consultar.setLayout(null);
         consultar.setBackground(Color.decode("#dce7ec"));
+        
+        JLabel eliminarI= new JLabel("Consultar Informacion de Maestros");
+        eliminarI.setFont(new Font("Comic Sans", Font.BOLD,30));
+        eliminarI.setBounds(110, 10, 800, 50);
+        consultar.add(eliminarI);
 	
         JScrollPane scroll = new JScrollPane(new Tabla(getMaestros(), maestrosColumns));
         scroll.setBounds(50, 230, 880, 300);
         scroll.setVisible(true);
         consultar.add(scroll);
         
-		JLabel fondo = new JLabel(new ImageIcon("hotalF.PNG"));
-		fondo.setBounds(-2, 1, 1000, 600);//ANCHO X, Y,TAMAÑO
-		consultar.add(fondo);
+        
         
         anterior=actual;
 		actual=consultar;
@@ -599,6 +608,7 @@ public class Ventana extends JFrame {
 		
 	}
 
+	
 	public void Perfil() {
 		perfil = new JPanel();
 		perfil.setSize(1000,600);
@@ -615,13 +625,12 @@ public class Ventana extends JFrame {
 		menuBar.add(cuentaMenu);
 		this.setJMenuBar(menuBar);
 		
+		
+
 		JMenu usuariosMenu = new JMenu("Usuarios");
 		JMenuItem ConsultaMenuItem = new JMenuItem("Consultar Cuenta");
 		JMenuItem crearUsuarioMenuItem = new JMenuItem("Crear usuarios");
 		JMenuItem downloadInfo= new JMenuItem("Descargar Info");
-		JMenuItem eliminarUsuario= new JMenuItem("Eliminar Cuenta");
-		usuariosMenu.add(eliminarUsuario);
-
 		usuariosMenu.add(ConsultaMenuItem);
 		usuariosMenu.add(crearUsuarioMenuItem);
 		menuBar.add(usuariosMenu);
@@ -658,7 +667,7 @@ public class Ventana extends JFrame {
 		ConsultaMenuItem.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        ConsultarUsuarios();
+		        ConsultarMaestros();
 		    }
 		});
 		downloadInfo.addActionListener(new ActionListener() {
@@ -672,20 +681,6 @@ public class Ventana extends JFrame {
 //				} catch (IOException e1) {
 //					e1.printStackTrace();
 //				}
-			}
-			
-		});
-		eliminarUsuario.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-					try {
-						eliminarUsuario(posicionUsuario);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
 			}
 			
 		});
@@ -769,7 +764,7 @@ public class Ventana extends JFrame {
 	
 	}
 
-	public void CrearUsuarios(JTextField nombreText, JTextField apellidosText,
+	public void CrearUsuarioDocente(JTextField nombreText, JTextField apellidosText,
 			JTextField FechaN, JTextField correo, JTextField numT, JPasswordField contraseñaText) {
 
 //		CrearUsuario(username, apellidos, FechaN, Correo, Num, password);
@@ -827,6 +822,76 @@ public class Ventana extends JFrame {
 
 			} catch (IOException e1) {
 				
+				e1.printStackTrace();
+			}
+		}
+		else {
+
+			JOptionPane.showMessageDialog(this, "Error al registrar", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+
+	}
+	
+	public void CrearUsuario(JTextField nombreText, JTextField apellidosText, 
+			JTextField FechaN, JTextField correo, JTextField numT, JPasswordField contraseñaText) {
+
+//		CrearUsuario(username, apellidos, FechaN, Correo, Num, password);
+
+
+		//String password = new String(contraseñaText.getPassword());
+		String password = new String(contraseñaText.getPassword());
+		String datosUsuario = "";
+
+		boolean match = false;
+
+		if(password.length() != 0
+				&& nombreText.getText().length() != 0
+				&& apellidosText.getText().length() != 0
+				&& FechaN.getText().length() != 0
+				&& correo.getText().length() != 0) {
+
+			try {
+				FileWriter writer = new FileWriter("users.txt", true);
+
+				BufferedWriter buffWriter = new BufferedWriter(writer);
+
+				datosUsuario = nombreText.getText()+","
+						+apellidosText.getText()+","
+						+correo.getText()+","
+						+FechaN.getText()+","
+						+numT.getText()+","
+						+password;
+
+				BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
+				String line = reader.readLine();
+
+				String[] lineArray = null;
+
+				while (line != null) {
+					lineArray = line.split(",");
+
+					if(correo.getText().equals(lineArray[3])) {
+						match = true;
+					}
+
+					line = reader.readLine();
+				}
+				reader.close();
+
+				if(!match) {
+					buffWriter.write(datosUsuario);
+					buffWriter.newLine();
+					buffWriter.close();
+					JOptionPane.showMessageDialog(this, "Cuenta creada con exito", "Listo!", JOptionPane.INFORMATION_MESSAGE);
+
+
+				}
+				else {
+					JOptionPane.showMessageDialog(this, "Error al registrar", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+
+			} catch (IOException e1) {
+
 				e1.printStackTrace();
 			}
 		}
@@ -923,7 +988,6 @@ public class Ventana extends JFrame {
 		}
 
 	}
-	
 	public String[] getDatosUsuario(int numUsuario) {
 		
 		String[] datos = null;

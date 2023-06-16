@@ -32,7 +32,7 @@ public class Ventana extends JFrame {
 	
 	ArrayList<String[]> usersList;
 	
-	private int posicionUsuario;//TXT
+	private int posicionUsuario;
     
     //-------
     private boolean registroPrevio = false;
@@ -299,6 +299,7 @@ public class Ventana extends JFrame {
 					
 					int aux=0;
 					
+				//FILTROS PARA LOS CORREOS DE ESTUDIANTES O DOCENTES
 							while(line != null) {  
 								
 									
@@ -578,13 +579,18 @@ public class Ventana extends JFrame {
 		consultar.setLocation(0,0);
 		consultar.setLayout(null);
         consultar.setBackground(Color.decode("#dce7ec"));
+        
+        JLabel eliminarI= new JLabel("Informacion de Usuarios");
+        eliminarI.setFont(new Font("Comic Sans", Font.BOLD,30));
+        eliminarI.setBounds(110, 10, 800, 50);
+        consultar.add(eliminarI);
 	
         JScrollPane scroll = new JScrollPane(new Tabla(getMaestros(), maestrosColumns));
         scroll.setBounds(50, 230, 880, 300);
         scroll.setVisible(true);
         consultar.add(scroll);
         
-		JLabel fondo = new JLabel(new ImageIcon("hotalF.PNG"));
+		JLabel fondo = new JLabel(new ImageIcon("hotel.PNG"));
 		fondo.setBounds(-2, 1, 1000, 600);//ANCHO X, Y,TAMAÑO
 		consultar.add(fondo);
         
@@ -619,9 +625,6 @@ public class Ventana extends JFrame {
 		JMenuItem ConsultaMenuItem = new JMenuItem("Consultar Cuenta");
 		JMenuItem crearUsuarioMenuItem = new JMenuItem("Crear usuarios");
 		JMenuItem downloadInfo= new JMenuItem("Descargar Info");
-		JMenuItem eliminarUsuario= new JMenuItem("Eliminar Cuenta");
-		usuariosMenu.add(eliminarUsuario);
-
 		usuariosMenu.add(ConsultaMenuItem);
 		usuariosMenu.add(crearUsuarioMenuItem);
 		menuBar.add(usuariosMenu);
@@ -672,20 +675,6 @@ public class Ventana extends JFrame {
 //				} catch (IOException e1) {
 //					e1.printStackTrace();
 //				}
-			}
-			
-		});
-		eliminarUsuario.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-					try {
-						eliminarUsuario(posicionUsuario);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
 			}
 			
 		});
