@@ -28,8 +28,7 @@ public class Ventana extends JFrame {
 	
 	JTable table;
 
-	private String[] alumnosColumns  = {"Nombre", "Apellidos", "Fechad de nacimiento", "Correo", "Telefono", "Foto"};
-	private String[] maestrosColumns = {"Nombre", "Apellidos", "Fechad de nacimiento", "Correo", "Telefono", "Foto"};
+	private String[] maestrosColumns = {"Nombre", "Apellidos", "Fecha de nacimiento", "Correo", "Telefono","Contraseña"};
 	
 	ArrayList<String[]> usersList;
 	
@@ -66,7 +65,6 @@ public class Ventana extends JFrame {
 		
 	}
 	
-	
 	public void timer() {//Funcion timer realizada
 		
 		Timer timer = new Timer();
@@ -82,7 +80,6 @@ public class Ventana extends JFrame {
 		
 	}
 
-	
 	public void Bienvenida() {
 
 		bienvenida = new JPanel();
@@ -112,8 +109,6 @@ public class Ventana extends JFrame {
 		repaint();
 		revalidate();
 	}
-	
-		
 	
 	public void menuMiCuenta() {
 		miCuentaPanel = new JPanel();
@@ -232,7 +227,6 @@ public class Ventana extends JFrame {
         revalidate();
         repaint();
 	}
-	
 	
 	public void Login () {
 		login = new JPanel();
@@ -376,81 +370,9 @@ public class Ventana extends JFrame {
 		repaint();
 		revalidate();
 }	
-	//*
-	public void filtroUsuarios () {
-		filtroUsuarios = new JPanel();
-		filtroUsuarios.setSize(1000, 600);
-		filtroUsuarios.setLocation(0,0);
-		filtroUsuarios.setLayout(null);
-		filtroUsuarios.setBackground(Color.decode("#008299"));
-		
-		JLabel titleinicio = new JLabel("Elija el tipo de Usuario",JLabel.CENTER);
-		titleinicio.setFont(new Font("Comic Sans", Font.BOLD,20));
-		titleinicio.setSize(280, 40);
-		titleinicio.setLocation(125,100);
-		titleinicio.setOpaque(false);
-		titleinicio.setBackground(Color.decode("#4e7485"));
-		filtroUsuarios.add(titleinicio);
-		
-		JButton estudi = new JButton();
-		estudi.setText("Estudiante");
-		estudi.setSize(100, 40);
-		estudi.setLocation(100, 225);
-		estudi.setOpaque(false);
-		estudi.setBackground(Color.white);
-		filtroUsuarios.add(estudi);
-		
-		JButton docent = new JButton();
-		docent.setText("Docente");
-		docent.setSize(100, 40);
-		docent.setLocation(320, 225);
-		docent.setOpaque(false);
-		docent.setBackground(Color.white);
-		filtroUsuarios.add(docent);
-		docent.addActionListener(new ActionListener() {
-			@Override
-			
-			public void actionPerformed(ActionEvent e) {
-				docente = true;
-		        estudiante = false;
-				Login();
-			}
-			
-		});
-		
-		
-		estudi.addActionListener(new ActionListener() {
-			@Override
-			
-			public void actionPerformed(ActionEvent e) {
-				estudiante = true;
-		        docente = false;
-				Login();
-			}
-			
-		});
+
 	
-		JLabel btn1 = new JLabel(new ImageIcon("boton.PNG"));
-		btn1.setBounds(100, 225, 100, 40);
-		filtroUsuarios.add(btn1);
-		
-		JLabel btn2 = new JLabel(new ImageIcon("boton.PNG"));
-		btn2.setBounds(320, 225, 100, 40);
-		filtroUsuarios.add(btn2);
-		
-		JLabel fondo = new JLabel(new ImageIcon("hotel.PNG"));
-		fondo.setBounds(-2, 1, 525, 700);
-		filtroUsuarios.add(fondo);
-		
-		anterior=actual;
-		actual=filtroUsuarios;
-		remove(anterior);
-		add(actual);
-		
-		repaint();
-		revalidate();
-}//*/
-	public String buscarImagen() {
+public String buscarImagen() {
 		JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "Archivos de imagen", "jpg", "jpeg", "png", "gif");
@@ -565,19 +487,6 @@ public void menuCrearUsuario() {
 		iconoA5.setBounds(356, 494, 34, 34);
 		registro.add(iconoA5);
 		
-
-		/*
-
-		JRadioButton acepto = new JRadioButton("Acepto");
-		acepto.setSize(100, 20);
-		acepto.setLocation(75, 460);
-		acepto.setOpaque(true);
-		acepto.setBackground(Color.decode("#1f7690"));
-		registro.add(acepto);
-		
-		ButtonGroup bg = new ButtonGroup();
-		bg.add(acepto);
-		*/
 		JButton finalregistro = new JButton();
 		finalregistro.setText("Registrarse");
 		finalregistro.setSize(200, 20);
@@ -623,87 +532,14 @@ public void menuCrearUsuario() {
 		    }
 			
 		});
-	/*if(docente) {
-		//PANEL
-		registro.setSize(400,600);
-		registro.setLocation(50,10);
-		//BOTON CANCELAR
-		cancelar.setSize(90, 20);
-		cancelar.setLocation(300, 570);
-		//BOTON ACEPTO
-		acepto.setSize(100, 20);
-		acepto.setLocation(75, 520);
-		//TERMINOS Y CONDICIONES
-		tyc.setSize(250, 40);
-		tyc.setLocation(75, 470);
-		//BOTON ACEPTAR
-		finalregistro.setSize(100, 40);
-		finalregistro.setLocation(50, 550);
-		//BOTON AGREGAR IMAGEN
-		colocarImagen.setSize(130, 40);
-		colocarImagen.setLocation(160, 550);
-		//ETIQUETA
-		JLabel gradoDocente = new JLabel("Ingrese su grado de estudio",JLabel.CENTER);
-		gradoDocente.setFont(new Font("Comic Sans", Font.BOLD,16));
-		gradoDocente.setForeground(Color.decode("#ffffff"));
-		gradoDocente.setSize(250, 20);
-		gradoDocente.setLocation(75, 405);
-		gradoDocente.setOpaque(true);
-		gradoDocente.setBackground(Color.decode("#1f7690"));
-		registro.add(gradoDocente);
-		//GRADO DE ESTUDIO
-		JTextField gradoEstudio = new JTextField();
-		gradoEstudio.setSize(250, 30);
-		gradoEstudio.setLocation(75, 425);
-		registro.add(gradoEstudio);
-			
-			finalregistro.addActionListener(new ActionListener() {
 
-				@Override
-				public void actionPerformed(ActionEvent e) {
-
-					CrearUsuarioDocente(username, apellidos, FechaN, Correo, Num, password, gradoEstudio, imagen);
-				}
-				
-			});
-			}
-		else {
-			//PANEL
-			registro.setSize(400,550);
-			registro.setLocation(50,50);
-			//BOTON CANCELAR
-			cancelar.setSize(90, 20);
-			cancelar.setLocation(300, 510);
-			//BOTON ACEPTO
-			acepto.setSize(100, 20);
-			acepto.setLocation(75, 460);
-			//BOTON AGREGAR IMAGEN
-			colocarImagen.setSize(130, 40);
-			colocarImagen.setLocation(160, 495);
-			//TERMINOS Y CONDICIONES
-			tyc.setSize(250, 40);
-			tyc.setLocation(75, 410);
-			//BOTON ACEPTAR
-			finalregistro.setSize(100, 40);
-			finalregistro.setLocation(50, 495);
-			finalregistro.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-
-					CrearUsuario(username, apellidos, FechaN, Correo, Num, password, imagen);
-				}
-				
-			});
-			
-			}*/
 
 		finalregistro.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				CrearUsuarioDocente(username, apellidos, FechaN, Correo, Num, password, imagen);
+				CrearUsuarioDocente(username, apellidos, FechaN, Correo, Num, password);
 			}
 			
 		});
@@ -727,8 +563,6 @@ public void menuCrearUsuario() {
 			}
 		});
 		
-
-		
 		//--------------------------------------------------------------------
 		
 		JLabel fondo = new JLabel(new ImageIcon("hotel2.PNG"));
@@ -742,79 +576,7 @@ public void menuCrearUsuario() {
 		repaint();
 		revalidate();
 	}
-	/*
-	public void ListaUsuario() {
-		
-		listaUsuarios = new JPanel(new BorderLayout());
-		listaUsuarios.setSize(1000, 600);
-		listaUsuarios.setLocation(0,0);
-		listaUsuarios.setLayout(null);
-		listaUsuarios.setBackground(Color.decode("#dce7ec"));
-		
-		
 
-		JLabel listausuario= new JLabel("Lista de usuarios");
-		listausuario.setFont(new Font("Comic Sans", Font.BOLD,30));
-		listausuario.setBounds(130, 10, 300, 50);
-		listaUsuarios.add(listausuario);
-
-		JLabel editarAlumnos = new JLabel("Consultar alumnos");
-		editarAlumnos.setFont(new Font("Comic Sans", Font.BOLD,20));
-		editarAlumnos.setBounds(10, 30, 200, 100);
-		listaUsuarios.add(editarAlumnos);
-
-		JLabel editarMaestros = new JLabel("Consultar maestros");
-		editarMaestros.setFont(new Font("Comic Sans", Font.BOLD,20));
-		editarMaestros.setBounds(300, 30, 200, 100);
-		listaUsuarios.add(editarMaestros);
-		
-		JButton alumnosBtn = new JButton("A");
-		alumnosBtn.setBounds(10, 130, 200, 100);
-		listaUsuarios.add(alumnosBtn);
-		
-		JButton maestrosBtn = new JButton("M");
-		maestrosBtn.setBounds(300, 130, 200, 100);
-		listaUsuarios.add(maestrosBtn);
-		
-
-		alumnosBtn.addActionListener(new ActionListener() {
-			@Override
-			
-			public void actionPerformed(ActionEvent e) {
-				docente = false;
-		        estudiante = true;
-				
-		        ConsultarAlumnos();
-			}
-			
-		});
-		
-		
-		 maestrosBtn.addActionListener(new ActionListener() {
-			@Override
-			
-			public void actionPerformed(ActionEvent e) {
-				docente = true;
-		        estudiante = false;
-		        ConsultarMaestros();
-			}
-			
-		});
-		 
-			JLabel fondo = new JLabel(new ImageIcon("fondo.PNG"));
-			fondo.setBounds(-2, 1, 525, 700);//ANCHO X, Y,TAMAÑO
-			listaUsuarios.add(fondo);
-
-
-		anterior=actual;
-		actual=listaUsuarios;
-		remove(anterior);
-		add(actual);
-
-		repaint();
-		revalidate();
-	        
-	    }*/
 	public void ConsultarMaestros() {
 
 		consultar= new JPanel();
@@ -825,13 +587,15 @@ public void menuCrearUsuario() {
         
         JLabel eliminarI= new JLabel("Consultar Informacion de Maestros");
         eliminarI.setFont(new Font("Comic Sans", Font.BOLD,30));
-        eliminarI.setBounds(110, 10, 300, 50);
+        eliminarI.setBounds(110, 10, 800, 50);
         consultar.add(eliminarI);
 	
         JScrollPane scroll = new JScrollPane(new Tabla(getMaestros(), maestrosColumns));
-        scroll.setBounds(0, 330, 510, 200);
+        scroll.setBounds(50, 230, 880, 300);
         scroll.setVisible(true);
         consultar.add(scroll);
+        
+        
         
         anterior=actual;
 		actual=consultar;
@@ -843,33 +607,7 @@ public void menuCrearUsuario() {
 		
 		
 	}
-	/*
-	public void ConsultarAlumnos() {
 
-		consultar= new JPanel();
-		consultar.setSize(1000, 600);
-		consultar.setLocation(0,0);
-		consultar.setLayout(null);
-        consultar.setBackground(Color.decode("#dce7ec"));
-        
-        JLabel eliminarI= new JLabel("Consultar Informacion de Alumnos");
-        eliminarI.setFont(new Font("Comic Sans", Font.BOLD,30));
-        eliminarI.setBounds(110, 10, 300, 50);
-        consultar.add(eliminarI);
-	
-        JScrollPane scroll = new JScrollPane(new Tabla(getAlumnos(), alumnosColumns));
-        scroll.setBounds(0, 330, 510, 200);
-        scroll.setVisible(true);
-        consultar.add(scroll);
-		
-        anterior=actual;
-		actual=consultar;
-		remove(anterior);
-		add(actual);
-
-		repaint();
-		revalidate();
-	}*/
 	
 	public void Perfil() {
 		perfil = new JPanel();
@@ -1027,7 +765,7 @@ public void menuCrearUsuario() {
 	}
 
 	public void CrearUsuarioDocente(JTextField nombreText, JTextField apellidosText,
-			JTextField FechaN, JTextField correo, JTextField numT, JPasswordField contraseñaText , String imagen) {
+			JTextField FechaN, JTextField correo, JTextField numT, JPasswordField contraseñaText) {
 
 //		CrearUsuario(username, apellidos, FechaN, Correo, Num, password);
 		//String password = new String(contraseñaText.getPassword());
@@ -1053,9 +791,7 @@ public void menuCrearUsuario() {
 						+FechaN.getText()+","
 						+correo.getText()+","
 						+numT.getText()+","
-						+password+","
-						+imagen;
-
+						+password;
 				BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
 				String line = reader.readLine();
 
@@ -1097,7 +833,7 @@ public void menuCrearUsuario() {
 	}
 	
 	public void CrearUsuario(JTextField nombreText, JTextField apellidosText, 
-			JTextField FechaN, JTextField correo, JTextField numT, JPasswordField contraseñaText, String imagen) {
+			JTextField FechaN, JTextField correo, JTextField numT, JPasswordField contraseñaText) {
 
 //		CrearUsuario(username, apellidos, FechaN, Correo, Num, password);
 
@@ -1124,8 +860,7 @@ public void menuCrearUsuario() {
 						+correo.getText()+","
 						+FechaN.getText()+","
 						+numT.getText()+","
-						+password+","
-						+imagen;
+						+password;
 
 				BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
 				String line = reader.readLine();
@@ -1298,18 +1033,19 @@ public void menuCrearUsuario() {
 				lineArray = line.split(",");
 				
 				
-				for (int i = 0; i < lineArray.length-2; i++) {
+				for (int i = 0; i < lineArray.length; i++) {
 
 					if(lineArray[3].contains("@gmail")||lineArray[3].contains("@hotmail")||lineArray[3].contains("@outlook")||lineArray[3].contains("@alu.uabcs")||lineArray[3].contains("@uabcs"))
 					{
 
-						if(i == lineArray.length-3) {
+						if(i == lineArray.length) {
 							data[aux][i] = lineArray[i+1];
 							addDato = true;
-						}else if(i == lineArray.length-2) {
-							data[aux][i] = new JLabel(new ImageIcon(lineArray[i+1]));
-							addDato = true;
-						}else {
+						}//else if(i == lineArray.length-3) {
+							//data[aux][i] = new JLabel(new ImageIcon(lineArray[i+1]));
+							//addDato = true;
+						//}
+						else {
 						data[aux][i] = lineArray[i];
 						addDato = true;
 						}
@@ -1363,87 +1099,5 @@ public void menuCrearUsuario() {
 		return numLines;
 
 	}
-	/*
-	public Object[][] getAlumnos() {
-		
-//		String[] columns = {"Nombre", "Apellidos", "Fechad de nacimiento", "Correo", "Telefono", "Grado de estudio"};
-		Object[][] data = new Object[getNumeroDeAlumnos()][alumnosColumns.length];
-		
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
-			String line = reader.readLine();
-			
-			String[] lineArray = line.split(",");;
 
-			int aux = 0;
-			
-			boolean addDato = false;
-
-			//añade los datos de la base de datos a la matriz data
-			while (line != null) {
-				lineArray = line.split(",");
-				
-				
-				for (int i = 0; i < lineArray.length-1; i++) {
-
-					if(lineArray[3].contains("@alu.uabcs.mx"))
-					{
-
-						if(i == lineArray.length-2) {
-							data[aux][i] = new JLabel(new ImageIcon(lineArray[i+1]));
-							addDato = true;
-						}else {
-						data[aux][i] = lineArray[i];
-						addDato = true;
-						}
-					}
-
-				}
-				line = reader.readLine();
-				if(addDato) {
-				aux++;
-				addDato = false;
-				}
-			}
-
-			reader.close();
-			
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-
-		
-		return data;
-	}*/
-	/*
-	public int getNumeroDeAlumnos() {
-
-		int numLines = 0;
-
-		try {
-			BufferedReader readerCounter = new BufferedReader(new FileReader("users.txt"));
-			String lineCounter = readerCounter.readLine();
-
-			String[] data = lineCounter.split(",");
-			
-			while(lineCounter!=null) {
-				if(data[3].contains("@alu.uabcs.mx")) {
-				numLines++;
-				}
-				lineCounter = readerCounter.readLine();
-				
-				if(lineCounter!=null) {
-					data = lineCounter.split(",");
-				}
-			}
-
-			readerCounter.close();
-
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		} 
-
-		return numLines;
-
-	}*/
 }

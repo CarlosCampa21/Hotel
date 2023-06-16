@@ -1,4 +1,4 @@
-Ricardo,Ortega,15/5/2003,Rick_21@alu.uabcs.mx,6124754512,12345,material-escolar (1).png
-Ricardo,Ortega,15/5/2003,Rick_21@uabcs.mx,6124754512,12345,material-escolar (1).png
-Carlos,Campa,28/06/2002,ZENT_01@alu.uabcs.mx,6121837046,1,material-escolar(1).PNG
-Carlos,Andre,28/05/2002,ZENT@uabcs.mx,6121837046,1,material-escolar(1).PNG
+Ricardo,Ortega,15/5/2003,Rick_21@alu.uabcs.mx,6124754512,12345
+Ricardo,Ortega,15/5/2003,Rick_21@uabcs.mx,6124754512,12345
+Carlos,Campa,28/06/2002,ZENT_01@alu.uabcs.mx,6121837046,1
+Carlos,Andre,28/05/2002,ZENT@uabcs.mx,6121837046,1
