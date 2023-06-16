@@ -24,12 +24,8 @@ public class Ventana extends JFrame {
     JPanel suites, editarSuite;
    
 	String nombre;
-	String titulo = "Vista parcial al mar",descripcion="Habitación, 2 king, piso planta baja",precio="MXN$12,000",
-			datoSuite="Habitación, 1 King, piso planta baja, piscina de inmersión,\n"
-					+ " terraza\r 1 King, Mini refrigerador, 77m²/829pies, Área de estar,\n"
-					+ "Acceso inalámbrico a Internet de cortesía, Acceso a Internet por \n"
-					+ "cable de cortesía, Servicio de café y té, Características del \n"
-					+ "televisor: control remoto, 49pulg/124cm, y pantalla lcd";
+	String titulo = "Vista parcial al mar",descripcion="Habitación, 2 king, piso planta baja",precio="MXN$12,000",datoSuite="Habitación, 1 King, piso planta baja, piscina de \ninmersión, terraza\r"
+			+ "1 King, Mini refrigerador, 77m²/829pies, Área de estar, Acceso inalámbrico a Internet de cortesía, Acceso a Internet por cable de cortesía, Servicio de café y té, Características del televisor: control remoto, 49pulg/124cm, y pantalla lcd";
 	
 	DefaultTableModel tableModel;
 	
@@ -677,13 +673,6 @@ public class Ventana extends JFrame {
 		tituloHabitacion.setBackground(Color.decode("#5C87C0"));
 		editarSuite.add(tituloHabitacion);
 
-		JTextArea datos = new JTextArea(datoSuite);
-		datos.setFont(new Font("Comic Sans", Font.BOLD,15));
-		datos.setSize(490, 500);
-		datos.setLocation(510, 10);
-		datos.setOpaque(false);
-		datos.setForeground(Color.decode("#FFFFFF"));
-		editarSuite.add(datos);
 		
 		JTextField des = new JTextField(descripcion);
 		des.setFont(new Font("Comic Sans", Font.BOLD,12));
@@ -748,7 +737,6 @@ public class Ventana extends JFrame {
 				titulo = tituloHabitacion.getText();
 				descripcion = des.getText();
 				precio = prec.getText();
-				datoSuite = datos.getText();
 				JOptionPane.showMessageDialog(null, "Se guardo con exito", "Listo!", JOptionPane.INFORMATION_MESSAGE);
 
 				repaint();
@@ -784,13 +772,11 @@ public class Ventana extends JFrame {
 		tituloHabitacion.setForeground(Color.decode("#FFFFFF"));
 		suites.add(tituloHabitacion);
 		
-		JTextArea datos = new JTextArea(datoSuite);
+		JTextField datos = new JTextField(datoSuite);
 		datos.setFont(new Font("Comic Sans", Font.BOLD,15));
 		datos.setSize(490, 500);
 		datos.setLocation(510, 10);
 		datos.setOpaque(false);
-		datos.setEditable(false);
-		datos.setEnabled(false);
 		datos.setForeground(Color.decode("#FFFFFF"));
 		suites.add(datos);
 		

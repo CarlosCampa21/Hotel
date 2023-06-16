@@ -748,7 +748,6 @@ public class Ventana extends JFrame {
 				titulo = tituloHabitacion.getText();
 				descripcion = des.getText();
 				precio = prec.getText();
-				datoSuite = datos.getText();
 				JOptionPane.showMessageDialog(null, "Se guardo con exito", "Listo!", JOptionPane.INFORMATION_MESSAGE);
 
 				repaint();

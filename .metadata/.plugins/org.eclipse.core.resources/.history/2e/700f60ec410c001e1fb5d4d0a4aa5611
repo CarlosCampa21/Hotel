@@ -677,13 +677,6 @@ public class Ventana extends JFrame {
 		tituloHabitacion.setBackground(Color.decode("#5C87C0"));
 		editarSuite.add(tituloHabitacion);
 
-		JTextArea datos = new JTextArea(datoSuite);
-		datos.setFont(new Font("Comic Sans", Font.BOLD,15));
-		datos.setSize(490, 500);
-		datos.setLocation(510, 10);
-		datos.setOpaque(false);
-		datos.setForeground(Color.decode("#FFFFFF"));
-		editarSuite.add(datos);
 		
 		JTextField des = new JTextField(descripcion);
 		des.setFont(new Font("Comic Sans", Font.BOLD,12));
@@ -748,7 +741,6 @@ public class Ventana extends JFrame {
 				titulo = tituloHabitacion.getText();
 				descripcion = des.getText();
 				precio = prec.getText();
-				datoSuite = datos.getText();
 				JOptionPane.showMessageDialog(null, "Se guardo con exito", "Listo!", JOptionPane.INFORMATION_MESSAGE);
 
 				repaint();
@@ -789,8 +781,6 @@ public class Ventana extends JFrame {
 		datos.setSize(490, 500);
 		datos.setLocation(510, 10);
 		datos.setOpaque(false);
-		datos.setEditable(false);
-		datos.setEnabled(false);
 		datos.setForeground(Color.decode("#FFFFFF"));
 		suites.add(datos);
 		
