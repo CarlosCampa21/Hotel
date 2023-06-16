@@ -21,8 +21,10 @@ public class Ventana extends JFrame {
 	JPanel consultar;
 	JPanel accesoPermitido;
     JPanel listaUsuarios;
-    
-	String nombre, imagen="material-escolar(1).PNG";
+    JPanel suites, editarSuite;
+   
+	String nombre;
+	String titulo = "Vista parcial al mar",descripcion="Habitación, 2 king, piso planta baja",precio="MXN$12,000";
 	
 	DefaultTableModel tableModel;
 	
@@ -559,7 +561,7 @@ public class Ventana extends JFrame {
 		colocarImagen.setOpaque(true);
 		colocarImagen.setBackground(Color.white);
 		registro.add(colocarImagen);
-		
+		/*
 		colocarImagen.addActionListener(new ActionListener() {
 
 			@Override
@@ -579,7 +581,7 @@ public class Ventana extends JFrame {
 		        }
 		    }
 			
-		});
+		});*/
 
 
 		finalregistro.addActionListener(new ActionListener() {
@@ -591,6 +593,7 @@ public class Ventana extends JFrame {
 			}
 			
 		});
+		
 		cancelar.addActionListener(new ActionListener() {
 
 			@Override
@@ -652,7 +655,175 @@ public class Ventana extends JFrame {
 		
 		
 	}
+	
+	public void editarSuite() {
 
+		editarSuite= new JPanel();
+		editarSuite.setSize(1000, 600);
+		editarSuite.setLocation(0,0);
+		editarSuite.setLayout(null);
+		editarSuite.setBackground(Color.decode("#00000"));
+        
+		JTextField tituloHabitacion = new JTextField(titulo);
+		tituloHabitacion.setSize(230, 20);
+		tituloHabitacion.setLocation(5, 500);
+		tituloHabitacion.setOpaque(false);
+		tituloHabitacion.setForeground(Color.decode("#9F9E9D"));
+		tituloHabitacion.setBackground(Color.decode("#5C87C0"));
+		editarSuite.add(tituloHabitacion);
+
+		
+		JTextField des = new JTextField(descripcion);
+		des.setFont(new Font("Comic Sans", Font.BOLD,12));
+		des.setSize(230, 20);
+		des.setLocation(5, 520);
+		des.setOpaque(false);
+		des.setForeground(Color.decode("#9F9E9D"));
+		des.setBackground(Color.decode("#5C87C0"));
+		editarSuite.add(des);
+		
+		JTextField prec = new JTextField(precio);
+		prec.setFont(new Font("Comic Sans", Font.BOLD,12));
+		prec.setSize(260, 20);
+		prec.setLocation(235, 500);
+		prec.setOpaque(false);
+		prec.setForeground(Color.decode("#9F9E9D"));
+		prec.setBackground(Color.decode("#5C87C0"));
+		editarSuite.add(prec);
+		
+		JButton guardar = new JButton();
+		guardar.setText("Guardar");
+		guardar.setSize(90, 20);
+		guardar.setLocation(10, 550);
+		guardar.setOpaque(false);
+		guardar.setForeground(Color.decode("#9F9E9D"));
+		guardar.setBackground(Color.decode("#5C87C0"));
+		editarSuite.add(guardar);
+		
+		JButton salir = new JButton();
+		salir.setText("Salir");
+		salir.setSize(90, 20);
+		salir.setLocation(100, 550);
+		salir.setOpaque(false);
+		salir.setForeground(Color.decode("#9F9E9D"));
+		salir.setBackground(Color.decode("#5C87C0"));
+		editarSuite.add(salir);
+		
+		JLabel habitacion = new JLabel(new ImageIcon("ha1.PNG"));
+		habitacion.setBounds(-2, 1, 500, 500);//ANCHO X, Y,TAMAÑO
+		editarSuite.add(habitacion);
+		
+		
+		salir.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+	
+				remove(actual);
+				Suites();
+				repaint();
+				revalidate();
+			
+				
+			}
+		});
+		guardar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+	
+				
+				titulo = tituloHabitacion.getText();
+				descripcion = des.getText();
+				precio = prec.getText();
+				JOptionPane.showMessageDialog(null, "Se guardo con exito", "Listo!", JOptionPane.INFORMATION_MESSAGE);
+
+				repaint();
+				revalidate();
+			
+				
+			}
+		});
+        anterior=actual;
+		actual=editarSuite;
+		remove(anterior);
+		add(actual);
+
+		repaint();
+		revalidate();
+		
+		
+	}
+	
+	public void Suites() {
+
+		suites= new JPanel();
+		suites.setSize(1000, 600);
+		suites.setLocation(0,0);
+		suites.setLayout(null);
+		suites.setBackground(Color.decode("#00000"));
+        
+		JLabel tituloHabitacion = new JLabel(titulo);
+		tituloHabitacion.setFont(new Font("Comic Sans", Font.BOLD,15));
+		tituloHabitacion.setSize(230, 20);
+		tituloHabitacion.setLocation(5, 500);
+		tituloHabitacion.setOpaque(false);
+		tituloHabitacion.setForeground(Color.decode("#FFFFFF"));
+		suites.add(tituloHabitacion);
+		
+		JLabel des = new JLabel(descripcion);
+		des.setFont(new Font("Comic Sans", Font.BOLD,12));
+		des.setSize(230, 20);
+		des.setLocation(5, 520);
+		des.setOpaque(false);
+		des.setForeground(Color.decode("#FFFFFF"));
+		suites.add(des);
+		
+		JLabel prec = new JLabel(precio);
+		prec.setFont(new Font("Comic Sans", Font.BOLD,12));
+		prec.setSize(260, 20);
+		prec.setLocation(235, 500);
+		prec.setOpaque(false);
+		prec.setForeground(Color.decode("#FFFFFF"));
+		suites.add(prec);
+		
+		JButton editar = new JButton();
+		editar.setText("Editar");
+		editar.setSize(90, 20);
+		editar.setLocation(235, 520);
+		editar.setOpaque(false);
+		editar.setForeground(Color.decode("#9F9E9D"));
+		editar.setBackground(Color.decode("#5C87C0"));
+		suites.add(editar);
+		JLabel habitacion = new JLabel(new ImageIcon("ha1.PNG"));
+		habitacion.setBounds(-2, 1, 500, 500);//ANCHO X, Y,TAMAÑO
+		suites.add(habitacion);
+		
+		
+		editar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+	
+				remove(actual);
+				editarSuite();
+				repaint();
+				revalidate();
+			
+				
+			}
+		});
+        
+        anterior=actual;
+		actual=suites;
+		remove(anterior);
+		add(actual);
+
+		repaint();
+		revalidate();
+		
+		
+	}
 	public void Perfil() {
 		perfil = new JPanel();
 		perfil.setSize(1000,600);
@@ -675,6 +846,11 @@ public class Ventana extends JFrame {
 		JMenuItem downloadInfo= new JMenuItem("Descargar Info");
 		JMenuItem eliminarUsuario= new JMenuItem("Eliminar Cuenta");
 		usuariosMenu.add(eliminarUsuario);
+		
+		JMenu suites = new JMenu("Suites y Habitaciones");
+		JMenuItem suitesHabitaciones = new JMenuItem("Suites");
+		suites.add(suitesHabitaciones);
+		menuBar.add(suites);
 
 		usuariosMenu.add(ConsultaMenuItem);
 		usuariosMenu.add(crearUsuarioMenuItem);
@@ -690,6 +866,14 @@ public class Ventana extends JFrame {
 		    public void actionPerformed(ActionEvent e) {
 		        
 		        menuMiCuenta();
+		    }
+		});
+		
+		suitesHabitaciones.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        
+		        Suites();
 		    }
 		});
 		crearUsuarioMenuItem.addActionListener(new ActionListener() {
@@ -826,8 +1010,6 @@ public class Ventana extends JFrame {
 	public void CrearUsuarios(JTextField nombreText, JTextField apellidosText,
 			JTextField FechaN, JTextField correo, JTextField numT, JPasswordField contraseñaText) {
 
-//		CrearUsuario(username, apellidos, FechaN, Correo, Num, password);
-		//String password = new String(contraseñaText.getPassword());
 		String password = new String(contraseñaText.getPassword());
 		String datosUsuario = "";
 
@@ -894,10 +1076,7 @@ public class Ventana extends JFrame {
 	public void actualizarUsuario(JTextField nombreText, JTextField apellidosText,JTextField fechaN, 
 			JTextField correo, JTextField telefono, JPasswordField contraseñaText, int numUsuario) {
 
-//		CrearUsuario(username, apellidos, FechaN, Correo, Num, password);
 
-
-		//String password = new String(contraseñaText.getPassword());
 		String password = new String(contraseñaText.getPassword());
 		String datosUsuario = "";
 
