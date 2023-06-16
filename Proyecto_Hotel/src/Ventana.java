@@ -27,9 +27,9 @@ public class Ventana extends JFrame {
 	DefaultTableModel tableModel;
 	
 	JTable table;
-	
+
 	private String[] alumnosColumns  = {"Nombre", "Apellidos", "Fechad de nacimiento", "Correo", "Telefono", "Foto"};
-	private String[] maestrosColumns = {"Nombre", "Apellidos", "Fechad de nacimiento", "Correo", "Telefono", "Grado de estudio", "Foto"};
+	private String[] maestrosColumns = {"Nombre", "Apellidos", "Fechad de nacimiento", "Correo", "Telefono", "Foto"};
 	
 	ArrayList<String[]> usersList;
 	
@@ -38,6 +38,10 @@ public class Ventana extends JFrame {
     private JPanel filtroUsuarios;
     private boolean estudiante = true;
     private boolean docente = true;
+    
+    //-------
+    private boolean registroPrevio = false;
+    //-------
 
 	private DefaultTableModel modelo;
 
@@ -277,11 +281,8 @@ public class Ventana extends JFrame {
 			@Override
 			
 			public void actionPerformed(ActionEvent e) {
-
+				registroPrevio = false;
 				remove(actual);
-				//filtroUsuarios();	
-				//Perfil();
-				
 				menuCrearUsuario();
 				repaint();
 				revalidate();
@@ -308,9 +309,7 @@ public class Ventana extends JFrame {
 					
 					int aux=0;
 					
-					if(estudiante==true)
-					{
-						if(user.contains("@alu.uabcs.mx") && !user.contains("@uabcs.mx") ) {//FILTROS PARA LOS CORREOS DE ESTUDIANTES O DOCENTES
+				//FILTROS PARA LOS CORREOS DE ESTUDIANTES O DOCENTES
 							while(line != null) {  
 								
 									
@@ -334,43 +333,15 @@ public class Ventana extends JFrame {
 								
 								
 							}
-						}else {
-							JOptionPane.showMessageDialog(null, "Usuario incorrecto","ERROR",JOptionPane.ERROR_MESSAGE );
-						}
-						
-					}//FIN DEL IF 
-					else {
-						if(docente==false) {
-							if(!user.contains("@alu.uabcs.mx") && user.contains("@uabcs.mx")) {
-								while(line != null) {
-									
-										
-									String data [] = line.split(",");
-									 
-									if( user.equals(data[3]) ) {
-										
-										if( pwd.equals(data[5]) ) {
-											posicionUsuario = aux;
-											flag = true;
-										}
-									} 
-									
-									line = reader.readLine();
-									aux++;
-									
-									
-								}
-							}else {
-								JOptionPane.showMessageDialog(null, "Usuario incorrecto","ERROR",JOptionPane.ERROR_MESSAGE );
-							}
-						}
-					}
+					
+			
 					if(flag==true) {
 						
 						String[] datos = getDatosUsuario(posicionUsuario);
 						
 						nombre = datos[0];
 						JOptionPane.showMessageDialog(null,"Bienvenido "+nombre,"Acceso Permitido", JOptionPane.CLOSED_OPTION );
+						registroPrevio=true;
 						Perfil();
 						
 					}/*else {
@@ -396,15 +367,12 @@ public class Ventana extends JFrame {
 		
 		JLabel fondo = new JLabel(new ImageIcon("hotel1.PNG")); //FONDO
 		fondo.setBounds(-2, 1, 1000, 600);
+		
 		login.add(fondo); 
-		
-
-		
 		anterior=actual;
 		actual=login;
 		remove(anterior);
 		add(actual);
-		
 		repaint();
 		revalidate();
 }	
@@ -735,7 +703,7 @@ public void menuCrearUsuario() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				CrearUsuario(username, apellidos, FechaN, Correo, Num, password, imagen);
+				CrearUsuarioDocente(username, apellidos, FechaN, Correo, Num, password, imagen);
 			}
 			
 		});
@@ -743,12 +711,20 @@ public void menuCrearUsuario() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(registroPrevio == false) {
+				
+				remove(actual);
+				Login();
+				repaint();
+				revalidate();
+				}else {
 				remove(actual);
 				Perfil();
 				repaint();
 				revalidate();
-			}
 			
+				}
+			}
 		});
 		
 
@@ -766,11 +742,11 @@ public void menuCrearUsuario() {
 		repaint();
 		revalidate();
 	}
-	
+	/*
 	public void ListaUsuario() {
 		
 		listaUsuarios = new JPanel(new BorderLayout());
-		listaUsuarios.setSize(525,700);
+		listaUsuarios.setSize(1000, 600);
 		listaUsuarios.setLocation(0,0);
 		listaUsuarios.setLayout(null);
 		listaUsuarios.setBackground(Color.decode("#dce7ec"));
@@ -838,11 +814,11 @@ public void menuCrearUsuario() {
 		repaint();
 		revalidate();
 	        
-	    }
+	    }*/
 	public void ConsultarMaestros() {
 
 		consultar= new JPanel();
-		consultar.setSize(525,700);
+		consultar.setSize(1000, 600);
 		consultar.setLocation(0,0);
 		consultar.setLayout(null);
         consultar.setBackground(Color.decode("#dce7ec"));
@@ -864,12 +840,14 @@ public void menuCrearUsuario() {
 
 		repaint();
 		revalidate();
+		
+		
 	}
-	
+	/*
 	public void ConsultarAlumnos() {
 
 		consultar= new JPanel();
-		consultar.setSize(525,700);
+		consultar.setSize(1000, 600);
 		consultar.setLocation(0,0);
 		consultar.setLayout(null);
         consultar.setBackground(Color.decode("#dce7ec"));
@@ -891,7 +869,7 @@ public void menuCrearUsuario() {
 
 		repaint();
 		revalidate();
-	}
+	}*/
 	
 	public void Perfil() {
 		perfil = new JPanel();
@@ -919,21 +897,10 @@ public void menuCrearUsuario() {
 		usuariosMenu.add(crearUsuarioMenuItem);
 		menuBar.add(usuariosMenu);
 		usuariosMenu.add(downloadInfo);
-
-		
-		/*
-		JLabel bienvenidaPerfil = new JLabel();
-		bienvenidaPerfil.setText("Bienvenido "+ nombre);
-		bienvenidaPerfil.setBounds(100, 10, 300, 80);
-		bienvenidaPerfil.setHorizontalAlignment(SwingConstants.CENTER);
-		bienvenidaPerfil.setForeground(Color.BLACK);
-		bienvenidaPerfil.setFont(new Font("cooper black",0,25));
-		perfil.add(bienvenidaPerfil);*/
 		
 		JLabel iconoLista = new JLabel(new ImageIcon("material-escolar(1).PNG"));
 		iconoLista.setBounds(165, 80, 170, 170);
 		perfil.add(iconoLista);
-		
 		
 		miCuentaMenuItem.addActionListener(new ActionListener() {
 		    @Override
@@ -942,23 +909,12 @@ public void menuCrearUsuario() {
 		        menuMiCuenta();
 		    }
 		});
-		
 		crearUsuarioMenuItem.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        
 		        menuCrearUsuario();
 		    }
 		});
-		
-		crearUsuarioMenuItem.addActionListener(new ActionListener() {
-		    @Override
-		    public void actionPerformed(ActionEvent e) {
-		        
-		        menuCrearUsuario();
-		    }
-		});
-		
 		cerrarSesionMenuItem.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
@@ -968,22 +924,14 @@ public void menuCrearUsuario() {
 		    	menuBar.remove(usuariosMenu);
 		    	Login();
 		    	//filtroUsuarios();
-		    	
 		    }
 		});
-		
-		
-		
-
 		ConsultaMenuItem.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        
-		        ListaUsuario();
-
+		        ConsultarMaestros();
 		    }
 		});
-		
 		downloadInfo.addActionListener(new ActionListener() {
 
 			@Override
@@ -998,7 +946,6 @@ public void menuCrearUsuario() {
 			}
 			
 		});
-		
 		JLabel fondo = new JLabel(new ImageIcon("FondoInicio1.PNG"));
 		fondo.setBounds(-2, 1, 1000, 600);//ANCHO X, Y,TAMAÑO
 		perfil.add(fondo);
@@ -1010,12 +957,7 @@ public void menuCrearUsuario() {
 		
 		repaint();
 		revalidate();
-		
-		
-
 	}
-	
-	
 	
 	public void descargar(int numUsuarioDescargar) {
 		  
@@ -1085,11 +1027,9 @@ public void menuCrearUsuario() {
 	}
 
 	public void CrearUsuarioDocente(JTextField nombreText, JTextField apellidosText,
-			JTextField FechaN, JTextField correo, JTextField numT, JPasswordField contraseñaText ,JTextField  gradoEstudio, String imagen) {
+			JTextField FechaN, JTextField correo, JTextField numT, JPasswordField contraseñaText , String imagen) {
 
 //		CrearUsuario(username, apellidos, FechaN, Correo, Num, password);
-
-
 		//String password = new String(contraseñaText.getPassword());
 		String password = new String(contraseñaText.getPassword());
 		String datosUsuario = "";
@@ -1101,7 +1041,6 @@ public void menuCrearUsuario() {
 				&& apellidosText.getText().length() != 0
 				&& FechaN.getText().length() != 0
 				&& correo.getText().length() != 0
-				&& gradoEstudio.getText().length() != 0
 				) {
 
 			try {
@@ -1115,7 +1054,6 @@ public void menuCrearUsuario() {
 						+correo.getText()+","
 						+numT.getText()+","
 						+password+","
-						+gradoEstudio.getText()+","
 						+imagen;
 
 				BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
@@ -1360,9 +1298,9 @@ public void menuCrearUsuario() {
 				lineArray = line.split(",");
 				
 				
-				for (int i = 0; i < lineArray.length-1; i++) {
+				for (int i = 0; i < lineArray.length-2; i++) {
 
-					if(lineArray[3].contains("@uabcs.mx"))
+					if(lineArray[3].contains("@gmail")||lineArray[3].contains("@hotmail")||lineArray[3].contains("@outlook")||lineArray[3].contains("@alu.uabcs")||lineArray[3].contains("@uabcs"))
 					{
 
 						if(i == lineArray.length-3) {
@@ -1406,7 +1344,7 @@ public void menuCrearUsuario() {
 			String[] data = lineCounter.split(",");
 			
 			while(lineCounter!=null) {
-				if(data[3].contains("@uabcs.mx")) {
+				if(data[3].contains("@gmail")||data[3].contains("@hotmail")||data[3].contains("@outlook")||data[3].contains("@alu.uabcs")||data[3].contains("@uabcs")) {
 				numLines++;
 				}
 				lineCounter = readerCounter.readLine();
@@ -1425,7 +1363,7 @@ public void menuCrearUsuario() {
 		return numLines;
 
 	}
-	
+	/*
 	public Object[][] getAlumnos() {
 		
 //		String[] columns = {"Nombre", "Apellidos", "Fechad de nacimiento", "Correo", "Telefono", "Grado de estudio"};
@@ -1476,8 +1414,8 @@ public void menuCrearUsuario() {
 
 		
 		return data;
-	}
-	
+	}*/
+	/*
 	public int getNumeroDeAlumnos() {
 
 		int numLines = 0;
@@ -1507,5 +1445,5 @@ public void menuCrearUsuario() {
 
 		return numLines;
 
-	}
+	}*/
 }
